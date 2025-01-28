@@ -35,7 +35,7 @@ Record:       At this meeting, we confirmed that we could not continue to pursue
 
 At the end of this meeting, we submit our initial web board post.
 
-## Meeting #3
+## Meeting #4
 Date:         _1/27/2025 (Recorded for reference on 1/28/2025)_  
 Objectives:   The goal of this meeting was to discuss feedback received for our project idea and to decide to continue pursuing the project idea or look for a new idea to pursue.  
 Record:       After talking to TA's Jiankun and Michael, we determined that our idea for a security system may not be the best to pursue as our distinguishing factor is price and completeness as completeness is something that has already been achieved, it's just pricier.  
