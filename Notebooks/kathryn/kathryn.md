@@ -41,3 +41,8 @@ Objectives:   The goal of this meeting was to discuss feedback received for our 
 Record:       After talking to TA's Jiankun and Michael, we determined that our idea for a security system may not be the best to pursue as our distinguishing factor is price and completeness as completeness is something that has already been achieved, it's just pricier.  
 
 We then decided to focus on looking at pet feeders that feed pets while maintaining the freshness of the food. We submit the initial post to the web board for approval.
+
+## Meeting #4
+Date:         _1/28/2025_ 
+Objectives:   The goal of this meeting was to discuss feedback received for our project idea and draft a response to the feedback received entailing the project subsystems.  
+Record:       After receiving feedback from Jason, we drafted our list of subsystems for our food dispensor.
