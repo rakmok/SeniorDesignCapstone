@@ -43,6 +43,8 @@ Record:       After talking to TA's Jiankun and Michael, we determined that our 
 We then decided to focus on looking at pet feeders that feed pets while maintaining the freshness of the food. We submit the initial post to the web board for approval.
 
 ## Meeting #4
-Date:         _1/28/2025_ 
+Date:         _1/28/2025_  
 Objectives:   The goal of this meeting was to discuss feedback received for our project idea and draft a response to the feedback received entailing the project subsystems.  
 Record:       After receiving feedback from Jason, we drafted our list of subsystems for our food dispensor.
+
+At the end of this meeting, we posted our Project Proposal.
