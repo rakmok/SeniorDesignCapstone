@@ -51,8 +51,7 @@ At the end of this meeting, we posted our Project Proposal.
 
 ## Meeting #6
 Date:         _2/3/2025_  
-Objectives:   The goal of this meeting is to finish the soldering assignment, make the team contract, and set our goals for the semester. 
-Record:       After receiving feedback from Jason, we drafted our list of subsystems for our food dispensor.
+Objectives:   The goal of this meeting is to finish the soldering assignment, make the team contract, and set our goals for the semester.   
+Record:       Team Contract is completed only requiring the addition of the meeting time with the TA. Project has been approved. Goals have been set.  
 
-At the end of this meeting, we posted our Project Proposal.
 
