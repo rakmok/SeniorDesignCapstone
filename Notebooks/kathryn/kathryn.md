@@ -54,4 +54,12 @@ Date:         _2/3/2025_
 Objectives:   The goal of this meeting is to finish the soldering assignment, make the team contract, and set our goals for the semester.   
 Record:       Team Contract is completed only requiring the addition of the meeting time with the TA. Project has been approved. Goals have been set.  
 
+## Meeting #7
+Date:         _2/10/2025_  
+Objectives:   The goal of this meeting was to talk to Greg about project design and to work on project proposal.   
+Record:       Project proposal was largely completed. Met with Greg for the first time.  
 
+## Meeting #8
+Date:         _2/11/2025_  
+Objectives:   The goal of this meeting was to further define project design with Greg and what we need to aquire for him. Additional goals were to work on project proposal.   
+Record:       Project proposal was completed for review at TA meeting. Finalized design with Greg. Determined we needed to aquire a load cell for weight sensing, a motor for covering the food bowl, a stepper motor for food dispensing, a button to determine the presence of a dog, at least 2 LED tranceiver/receiver sets for food store capacity, and a food bowl to dispense food into. In addition, we needed to get a sample of dog food for Greg to get an idea of size.
