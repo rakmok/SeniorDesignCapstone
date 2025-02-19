@@ -52,4 +52,4 @@ The statement of objective for this meeting is to prepare for the proposal revie
 
 We did not order the parts, but we did look into some more of the circuit design details. We didn't know that a level shifter was necessary to regulate voltage to the microcontroller at a signal level from the sensors. We also drastically improved our block diagram, made many changes to our proposal (essentially completing the proposal v2 assignment), and practiced presenting our proposal (Dry runs). We cut down on the fluff and the whole group got on the same page about some of our design choices and the aspects of the problem we are trying to solve.
 
-![New Block Diagram](images/blockv2.png)
+![New Block Diagram](images/blockv2.jpg)
