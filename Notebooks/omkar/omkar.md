@@ -53,3 +53,15 @@ The statement of objective for this meeting is to prepare for the proposal revie
 We did not order the parts, but we did look into some more of the circuit design details. We didn't know that a level shifter was necessary to regulate voltage to the microcontroller at a signal level from the sensors. We also drastically improved our block diagram, made many changes to our proposal (essentially completing the proposal v2 assignment), and practiced presenting our proposal (Dry runs). We cut down on the fluff and the whole group got on the same page about some of our design choices and the aspects of the problem we are trying to solve.
 
 ![New Block Diagram](images/blockv2.png)
+
+# 02/24/2025
+
+The statement of objective for this meeting is to order the parts that Greg needs for helping us build our design. We are also hoping to order many of the other parts after determining which parts overlap with the supply shop inventory. In order to do this, we will need to look into the subcircuit design for the motor drivers. The custom battery pack cannot be built until OpenLab gets some new tips for their spot-welder which is necessary for spot-welding the nickel strips onto the lithium-ion cells.
+
+# 02/25/2025
+
+The statement of objective for this meeting is to finish ordering the parts and keep working on the physical design of the sensor and driver circuits.
+
+# 02/27/2025
+
+The statement of objective for this meeting is to start finalizing the circuit design aspects and get familiar with UART and RFID protocols.
