@@ -52,8 +52,7 @@ The statement of objective for this meeting is to prepare for the proposal revie
 
 We did not order the parts, but we did look into some more of the circuit design details. We didn't know that a level shifter was necessary to regulate voltage to the microcontroller at a signal level from the sensors. We also drastically improved our block diagram, made many changes to our proposal (essentially completing the proposal v2 assignment), and practiced presenting our proposal (Dry runs). We cut down on the fluff and the whole group got on the same page about some of our design choices and the aspects of the problem we are trying to solve.
 
-<<<<<<< HEAD
-![New Block Diagram](images/blockv2.png)
+![New Block Diagram](images/blockv2.jpg)
 
 # 02/24/2025
 
@@ -66,6 +65,3 @@ The statement of objective for this meeting is to finish ordering the parts and 
 # 02/27/2025
 
 The statement of objective for this meeting is to start finalizing the circuit design aspects and get familiar with UART and RFID protocols.
-=======
-![New Block Diagram](images/blockv2.jpg)
->>>>>>> 72e41805c477a11e47a900c3c0151c46fdfb4e99
