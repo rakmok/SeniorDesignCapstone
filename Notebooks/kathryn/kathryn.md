@@ -68,4 +68,24 @@ Record:       Project proposal was completed for review at TA meeting. Finalized
 ## Meeting #9
 Date:         _2/18/2025_   
 Objectives:   The goal of this meeting was to practice our presentation for the Design Review.  
-Record:       Practiced presentation for review tomorrow at 3PM. We agreed that we would meet 15-20 minutes in advance of the Proposal Review.  
+Record:       Practiced presentation for review tomorrow at 3PM. We agreed that we would meet 15-20 minutes in advance of the Proposal Review.
+
+## Meeting #10
+Date:         _2/24/2025_   
+Objectives:   The goal of this meeting was to go over feedback from proposal review, finalize parts list and look at next steps. Met with TA for the last hour.    
+Record:       Deliverables for breadboard demo:  
+  1. project uses 2 or 3 different sensors working
+  2. code running on microcontroller
+  3. read and understand signals from the differrent sensors
+  4. recieving some sort of thing
+  5. microcontroller communication app is working, the app receives updates from the microcontroller
+  6. motor works (on off), esp can send signals to change the speeds (dependent on the drivers)
+  7. bluetooth to app good (but not critical)
+  8. CODE IS VERY IMPORTANT
+  9. app can be done in a week: mongodb, react
+
+## Meeting #11
+Date:         _2/25/2025_   
+Objectives:   The goal of this meeting was to work on circuit, RFID, parts, and database. 
+Record:       During this meeting, Omkar worked on the Brain circuit, Arash worked on the RFID parts, and I worked on the Database schema. Files for the database can be referenced [here](./ece445_project_UI_code_files)
+
