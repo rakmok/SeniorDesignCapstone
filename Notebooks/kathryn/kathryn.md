@@ -86,6 +86,6 @@ Record:       Deliverables for breadboard demo:
 
 ## Meeting #11
 Date:         _2/25/2025_   
-Objectives:   The goal of this meeting was to work on circuit, RFID, parts, and database. 
-Record:       During this meeting, Omkar worked on the Brain circuit, Arash worked on the RFID parts, and I worked on the Database schema. Files for the database can be referenced [here](./ece445_project_UI_code_files)
+Objectives:   The goal of this meeting was to work on circuit, RFID, parts, and database.  
+Record:       During this meeting, Omkar worked on the Brain circuit, Arash worked on the RFID parts, and I worked on the Database schema. Files for the database can be referenced [here](../../UI/).
 
