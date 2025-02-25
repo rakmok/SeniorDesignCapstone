@@ -62,6 +62,22 @@ The statement of objective for this meeting is to order the parts that Greg need
 
 The statement of objective for this meeting is to finish ordering the parts and keep working on the physical design of the sensor and driver circuits.
 
+We did not finish ordering the parts today, but we had a great conversation with Aishee about what parts to select, what "break-out" boards are okay to use (i.e. case by case basis on complexity of design versus how relevant it is to your project), and what the breadboard demo will entail. We also discussed as a group what needs to get done to prepare for the board send out next week. I started looking into some of the circuits and wiring for the different subsystems (picture below). The group also checked out a dev board ESP32 and two RFID tags for the breadboard demo. There were two main points that we discussed: one was our deliverables for the breadboard demo and the other was the utilization of a combined RFID board (with the reader and MCU interface), so we don't need to spend a lot of money on a programmer.
+
+![New Block Diagram](images/power_circuit_1.jpg)
+
+Here are the deliverables for the breadboard demo, written/recorded by Kathryn:
+
+1. Project uses at least 2 or 3 different sensors working
+2. Code is running on the microcontroller
+3. Microcontroller reads and understands signals from the different sensors
+4. Receiving some sort of thing to the app,
+5. Microcontroller communication to app is working, the app receives updates from the microcontroller
+6. Motor works (on/off), esp can send signals to change the speeds (dependent on the drivers)
+7. Bluetooth to app good (but not critical)
+8. CODE IS VERY IMPORTANT
+9. App can be done in a week
+
 # 02/27/2025
 
 The statement of objective for this meeting is to start finalizing the circuit design aspects and get familiar with UART and RFID protocols.
