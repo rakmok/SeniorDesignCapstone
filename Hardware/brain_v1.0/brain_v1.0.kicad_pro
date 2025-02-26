@@ -396,7 +396,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Template_v0.0.kicad_pro",
+    "filename": "brain_v1.0.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -485,6 +485,10 @@
     [
       "1e1b062d-fad0-427c-a622-c5b8a80b5268",
       ""
+    ],
+    [
+      "88dc6c48-fc37-4022-af3c-4da37eedeb92",
+      "Power Subcircuits"
     ]
   ],
   "text_variables": {}
