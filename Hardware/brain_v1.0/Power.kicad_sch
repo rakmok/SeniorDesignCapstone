@@ -2174,7 +2174,7 @@
   (symbol (lib_id "Device:R_US") (at 185.42 49.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp yes) (fields_autoplaced)
     (uuid 47c6cd53-cc8e-46f8-a2aa-b24f612dae1d)
-    (property "Reference" "R20" (at 187.071 48.3179 0)
+    (property "Reference" "R29" (at 187.071 48.3179 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1M" (at 187.071 50.7421 0)
