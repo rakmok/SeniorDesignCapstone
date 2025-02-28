@@ -485,18 +485,6 @@
     [
       "1e1b062d-fad0-427c-a622-c5b8a80b5268",
       ""
-    ],
-    [
-      "746743d3-7add-4a0e-9b89-d67b4a6bc52a",
-      "Motor1_Power"
-    ],
-    [
-      "89921523-dfe0-4fb9-af02-a9673a087402",
-      "Motor2_Power1"
-    ],
-    [
-      "e9a765f8-cea6-440c-a615-75e1b7717a8f",
-      "Sensors_Power"
     ]
   ],
   "text_variables": {}
