@@ -6,7 +6,7 @@
 
   (title_block
     (title "Brain Power Subcircuits")
-    (date "2025-02-28")
+    (date "2025-03-01")
     (rev "v1.0")
     (company "Designed By: Omkar Kulkarni")
   )
@@ -1100,46 +1100,6 @@
         )
       )
     )
-    (symbol "power:PWR_FLAG" (power) (pin_numbers hide) (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "#FLG" (at 0 1.905 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Value" "PWR_FLAG" (at 0 3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "power-flag" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Special symbol for telling ERC where power comes from" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "PWR_FLAG_0_0"
-        (pin power_out line (at 0 0 90) (length 0)
-          (name "pwr" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-      (symbol "PWR_FLAG_0_1"
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 1.27)
-            (xy -1.016 1.905)
-            (xy 0 2.54)
-            (xy 1.016 1.905)
-            (xy 0 1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-    )
   )
 
   (junction (at 173.99 45.72) (diameter 0) (color 0 0 0 0)
@@ -1721,7 +1681,7 @@
           (reference "C6") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C18") (unit 1)
+          (reference "C25") (unit 1)
         )
       )
     )
@@ -1788,7 +1748,7 @@
           (reference "R1") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R23") (unit 1)
+          (reference "R32") (unit 1)
         )
       )
     )
@@ -1797,7 +1757,7 @@
   (symbol (lib_id "Device:C_Small") (at 68.58 151.13 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0f46f52a-201b-4581-96f2-c32b0525a5ee)
-    (property "Reference" "C5" (at 71.12 151.13 0)
+    (property "Reference" "C14" (at 71.12 151.13 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1000uF" (at 69.85 153.67 0)
@@ -1823,7 +1783,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C5") (unit 1)
+          (reference "C14") (unit 1)
         )
       )
     )
@@ -1832,7 +1792,7 @@
   (symbol (lib_id "device:Fuse") (at 62.23 147.32 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 12131def-bb64-46e6-86c4-27a0639134a3)
-    (property "Reference" "F1" (at 62.23 142.4137 90)
+    (property "Reference" "F3" (at 62.23 142.4137 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Fuse" (at 62.23 144.8379 90)
@@ -1855,7 +1815,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "F1") (unit 1)
+          (reference "F3") (unit 1)
         )
       )
     )
@@ -1883,7 +1843,7 @@
           (reference "#PWR01") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR039") (unit 1)
+          (reference "#PWR062") (unit 1)
         )
       )
     )
@@ -1919,7 +1879,7 @@
           (reference "U3") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "U4") (unit 1)
+          (reference "U5") (unit 1)
         )
       )
     )
@@ -1954,7 +1914,7 @@
           (reference "R3") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R27") (unit 1)
+          (reference "R42") (unit 1)
         )
       )
     )
@@ -1982,7 +1942,7 @@
           (reference "#PWR03") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR025") (unit 1)
+          (reference "#PWR056") (unit 1)
         )
       )
     )
@@ -2017,7 +1977,7 @@
           (reference "R5") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R26") (unit 1)
+          (reference "R38") (unit 1)
         )
       )
     )
@@ -2077,7 +2037,7 @@
           (reference "#PWR04") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR038") (unit 1)
+          (reference "#PWR060") (unit 1)
         )
       )
     )
@@ -2098,14 +2058,14 @@
     (property "Datasheet" "" (at 66.04 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid a359939e-05cd-4da7-8a61-255bb9c38463))
+    (pin "1" (uuid 35e058f3-66a0-4d3d-8d0a-ea1d458e737c))
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR05") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR028") (unit 1)
+          (reference "#PWR067") (unit 1)
         )
       )
     )
@@ -2114,7 +2074,7 @@
   (symbol (lib_id "device:D_Schottky") (at 49.53 147.32 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3111081d-dc57-49e4-bc97-5a138f89f51f)
-    (property "Reference" "D3" (at 49.8475 141.9057 0)
+    (property "Reference" "D5" (at 49.8475 141.9057 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "D_Schottky" (at 49.8475 144.3299 0)
@@ -2137,7 +2097,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "D3") (unit 1)
+          (reference "D5") (unit 1)
         )
       )
     )
@@ -2146,7 +2106,7 @@
   (symbol (lib_id "device:Fuse") (at 43.18 40.64 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 360a9485-2174-4809-9eb4-26d2a0ab6b70)
-    (property "Reference" "F3" (at 43.18 35.7337 90)
+    (property "Reference" "F1" (at 43.18 35.7337 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Fuse" (at 43.18 38.1579 90)
@@ -2169,7 +2129,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "F3") (unit 1)
+          (reference "F1") (unit 1)
         )
       )
     )
@@ -2204,7 +2164,7 @@
           (reference "J1") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "J7") (unit 1)
+          (reference "J13") (unit 1)
         )
       )
     )
@@ -2232,7 +2192,7 @@
           (reference "#PWR011") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR036") (unit 1)
+          (reference "#PWR080") (unit 1)
         )
       )
     )
@@ -2260,7 +2220,7 @@
           (reference "#PWR07") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR042") (unit 1)
+          (reference "#PWR076") (unit 1)
         )
       )
     )
@@ -2301,7 +2261,7 @@
           (reference "U2") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "U5") (unit 1)
+          (reference "U4") (unit 1)
         )
       )
     )
@@ -2329,7 +2289,7 @@
           (reference "#PWR014") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR027") (unit 1)
+          (reference "#PWR070") (unit 1)
         )
       )
     )
@@ -2338,7 +2298,7 @@
   (symbol (lib_id "Device:R_US") (at 185.42 49.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp yes) (fields_autoplaced)
     (uuid 47c6cd53-cc8e-46f8-a2aa-b24f612dae1d)
-    (property "Reference" "R29" (at 187.071 48.3179 0)
+    (property "Reference" "R45" (at 187.071 48.3179 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100k" (at 187.071 50.7421 0)
@@ -2361,7 +2321,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R29") (unit 1)
+          (reference "R45") (unit 1)
         )
       )
     )
@@ -2396,32 +2356,7 @@
           (reference "R7") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R22") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 55.88 161.29 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 4c17d5f7-1694-4dcb-a304-d4fee858291b)
-    (property "Reference" "#PWR047" (at 55.88 167.64 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 55.88 165.4231 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 55.88 161.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 55.88 161.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 74a18783-dd29-41ab-8caf-2d73f20d175e))
-    (instances
-      (project "brain_v1.0"
-        (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR047") (unit 1)
+          (reference "R44") (unit 1)
         )
       )
     )
@@ -2456,7 +2391,7 @@
           (reference "R2") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R17") (unit 1)
+          (reference "R35") (unit 1)
         )
       )
     )
@@ -2491,7 +2426,7 @@
           (reference "C6") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C24") (unit 1)
+          (reference "C21") (unit 1)
         )
       )
     )
@@ -2526,7 +2461,7 @@
           (reference "R3") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R18") (unit 1)
+          (reference "R36") (unit 1)
         )
       )
     )
@@ -2554,32 +2489,7 @@
           (reference "#PWR09") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR044") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:PWR_FLAG") (at 55.88 161.29 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 56353acd-5b0e-4c01-aa4e-761a84d37813)
-    (property "Reference" "#FLG05" (at 55.88 159.385 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "PWR_FLAG" (at 55.88 157.1569 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 55.88 161.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 55.88 161.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ef59d992-b0f1-4021-8031-9c3d4128fab9))
-    (instances
-      (project "brain_v1.0"
-        (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#FLG05") (unit 1)
+          (reference "#PWR081") (unit 1)
         )
       )
     )
@@ -2614,7 +2524,7 @@
           (reference "R6") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R21") (unit 1)
+          (reference "R41") (unit 1)
         )
       )
     )
@@ -2649,7 +2559,7 @@
           (reference "C1") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C21") (unit 1)
+          (reference "C11") (unit 1)
         )
       )
     )
@@ -2658,7 +2568,7 @@
   (symbol (lib_id "device:D_Schottky") (at 33.02 40.64 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5bcc25c4-e0a5-419b-8287-17431f4faf8b)
-    (property "Reference" "D1" (at 33.3375 35.2257 0)
+    (property "Reference" "D3" (at 33.3375 35.2257 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "D_Schottky" (at 33.3375 37.6499 0)
@@ -2681,7 +2591,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "D1") (unit 1)
+          (reference "D3") (unit 1)
         )
       )
     )
@@ -2716,7 +2626,7 @@
           (reference "C8") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C11") (unit 1)
+          (reference "C16") (unit 1)
         )
       )
     )
@@ -2725,7 +2635,7 @@
   (symbol (lib_id "device:D_Schottky") (at 38.1 101.6 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 662a3f3f-f48c-4c34-a78a-c316abda084f)
-    (property "Reference" "D2" (at 38.4175 96.1857 0)
+    (property "Reference" "D4" (at 38.4175 96.1857 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "D_Schottky" (at 38.4175 98.6099 0)
@@ -2748,7 +2658,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "D2") (unit 1)
+          (reference "D4") (unit 1)
         )
       )
     )
@@ -2776,7 +2686,7 @@
           (reference "#PWR02") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR040") (unit 1)
+          (reference "#PWR066") (unit 1)
         )
       )
     )
@@ -2811,7 +2721,7 @@
           (reference "C9") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C14") (unit 1)
+          (reference "C17") (unit 1)
         )
       )
     )
@@ -2839,7 +2749,7 @@
           (reference "#PWR010") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR035") (unit 1)
+          (reference "#PWR078") (unit 1)
         )
       )
     )
@@ -2848,7 +2758,7 @@
   (symbol (lib_id "power:+5V") (at 201.93 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6f786bdc-733a-4726-8bd0-c6d02937c873)
-    (property "Reference" "#PWR05" (at 201.93 49.53 0)
+    (property "Reference" "#PWR082" (at 201.93 49.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 201.93 41.5869 0)
@@ -2864,7 +2774,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR05") (unit 1)
+          (reference "#PWR082") (unit 1)
         )
       )
     )
@@ -2899,7 +2809,7 @@
           (reference "C7") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C17") (unit 1)
+          (reference "C24") (unit 1)
         )
       )
     )
@@ -2934,7 +2844,7 @@
           (reference "R2") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R24") (unit 1)
+          (reference "R33") (unit 1)
         )
       )
     )
@@ -2969,7 +2879,7 @@
           (reference "C3") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C13") (unit 1)
+          (reference "C15") (unit 1)
         )
       )
     )
@@ -2997,7 +2907,7 @@
           (reference "#PWR03") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR037") (unit 1)
+          (reference "#PWR054") (unit 1)
         )
       )
     )
@@ -3006,7 +2916,7 @@
   (symbol (lib_id "power:+12V") (at 55.88 27.94 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 835c1713-98a5-47d1-954b-5ac5534bc5e4)
-    (property "Reference" "#PWR06" (at 55.88 31.75 0)
+    (property "Reference" "#PWR061" (at 55.88 31.75 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (at 55.88 23.8069 0)
@@ -3022,7 +2932,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR06") (unit 1)
+          (reference "#PWR061") (unit 1)
         )
       )
     )
@@ -3057,7 +2967,7 @@
           (reference "C2") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C19") (unit 1)
+          (reference "C9") (unit 1)
         )
       )
     )
@@ -3092,7 +3002,7 @@
           (reference "R5") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R20") (unit 1)
+          (reference "R40") (unit 1)
         )
       )
     )
@@ -3155,7 +3065,7 @@
           (reference "#PWR08") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR041") (unit 1)
+          (reference "#PWR075") (unit 1)
         )
       )
     )
@@ -3183,7 +3093,7 @@
           (reference "#PWR07") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR031") (unit 1)
+          (reference "#PWR071") (unit 1)
         )
       )
     )
@@ -3253,7 +3163,7 @@
           (reference "R4") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R19") (unit 1)
+          (reference "R39") (unit 1)
         )
       )
     )
@@ -3288,7 +3198,7 @@
           (reference "C5") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C16") (unit 1)
+          (reference "C23") (unit 1)
         )
       )
     )
@@ -3323,7 +3233,7 @@
           (reference "C5") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C23") (unit 1)
+          (reference "C20") (unit 1)
         )
       )
     )
@@ -3332,7 +3242,7 @@
   (symbol (lib_id "power:+12V") (at 66.04 27.94 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9d83e86d-4c62-428b-844b-5c8883021cee)
-    (property "Reference" "#PWR07" (at 66.04 31.75 0)
+    (property "Reference" "#PWR065" (at 66.04 31.75 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (at 66.04 23.8069 0)
@@ -3348,7 +3258,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR07") (unit 1)
+          (reference "#PWR065") (unit 1)
         )
       )
     )
@@ -3389,7 +3299,7 @@
           (reference "U1") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "U6") (unit 1)
+          (reference "U3") (unit 1)
         )
       )
     )
@@ -3398,7 +3308,7 @@
   (symbol (lib_id "power:+12V") (at 39.37 147.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9edb525a-0d6f-4688-ad7d-e7c930a133fb)
-    (property "Reference" "#PWR03" (at 39.37 151.13 0)
+    (property "Reference" "#PWR058" (at 39.37 151.13 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (at 39.37 143.1869 0)
@@ -3414,7 +3324,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR03") (unit 1)
+          (reference "#PWR058") (unit 1)
         )
       )
     )
@@ -3442,32 +3352,7 @@
           (reference "#PWR08") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR029") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+12V") (at 45.72 161.29 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid adc52c94-cd1d-4e7e-8035-c02fb8c5ec86)
-    (property "Reference" "#PWR046" (at 45.72 165.1 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+12V" (at 45.72 157.1569 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 45.72 161.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 45.72 161.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 182b751b-9319-4bd9-a5d5-49ef9a606ba7))
-    (instances
-      (project "brain_v1.0"
-        (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR046") (unit 1)
+          (reference "#PWR069") (unit 1)
         )
       )
     )
@@ -3527,7 +3412,7 @@
           (reference "#PWR016") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR02") (unit 1)
+          (reference "#PWR057") (unit 1)
         )
       )
     )
@@ -3555,7 +3440,7 @@
           (reference "#PWR04") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR032") (unit 1)
+          (reference "#PWR072") (unit 1)
         )
       )
     )
@@ -3590,7 +3475,7 @@
           (reference "C7") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C25") (unit 1)
+          (reference "C22") (unit 1)
         )
       )
     )
@@ -3618,7 +3503,7 @@
           (reference "#PWR015") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR033") (unit 1)
+          (reference "#PWR074") (unit 1)
         )
       )
     )
@@ -3653,7 +3538,7 @@
           (reference "C3") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C20") (unit 1)
+          (reference "C12") (unit 1)
         )
       )
     )
@@ -3662,7 +3547,7 @@
   (symbol (lib_id "power:+3V3") (at 201.93 113.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid cbe8e861-126e-4b23-aaa2-3b8bf2a857f5)
-    (property "Reference" "#PWR04" (at 201.93 116.84 0)
+    (property "Reference" "#PWR083" (at 201.93 116.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (at 201.93 108.8969 0)
@@ -3678,7 +3563,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR04") (unit 1)
+          (reference "#PWR083") (unit 1)
         )
       )
     )
@@ -3706,7 +3591,7 @@
           (reference "#PWR09") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR01") (unit 1)
+          (reference "#PWR055") (unit 1)
         )
       )
     )
@@ -3741,7 +3626,7 @@
           (reference "C4") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C15") (unit 1)
+          (reference "C19") (unit 1)
         )
       )
     )
@@ -3776,7 +3661,7 @@
           (reference "R1") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R16") (unit 1)
+          (reference "R34") (unit 1)
         )
       )
     )
@@ -3804,7 +3689,7 @@
           (reference "#PWR013") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR030") (unit 1)
+          (reference "#PWR073") (unit 1)
         )
       )
     )
@@ -3839,7 +3724,7 @@
           (reference "R6") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R25") (unit 1)
+          (reference "R37") (unit 1)
         )
       )
     )
@@ -3848,7 +3733,7 @@
   (symbol (lib_id "Connector:Barrel_Jack") (at 26.67 149.86 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid dba64422-2f9e-4202-ba92-67a1006b6628)
-    (property "Reference" "J10" (at 26.67 141.9057 0)
+    (property "Reference" "J14" (at 26.67 141.9057 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Barrel_Jack" (at 26.67 144.3299 0)
@@ -3871,7 +3756,7 @@
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "J10") (unit 1)
+          (reference "J14") (unit 1)
         )
       )
     )
@@ -3898,15 +3783,15 @@
     (property "MPN" "C0603C103F3GECAUTO" (at 66.04 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 8c41fabd-42bd-40ef-9729-08dff315ac9f))
-    (pin "2" (uuid 0b5a1f9f-8134-4481-922b-e5e5bd21b11c))
+    (pin "1" (uuid dbf70e84-a3a8-434e-abd4-2da80d47491b))
+    (pin "2" (uuid 95165981-8738-41aa-a317-d83a79a30000))
     (instances
       (project "brain_v1.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "C2") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C12") (unit 1)
+          (reference "C13") (unit 1)
         )
       )
     )
@@ -3966,32 +3851,7 @@
           (reference "#PWR06") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR043") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:PWR_FLAG") (at 45.72 161.29 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid f09d1e65-6e2d-4c61-ad01-a72f631081b5)
-    (property "Reference" "#FLG04" (at 45.72 163.195 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "PWR_FLAG" (at 45.72 165.4231 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 45.72 161.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 45.72 161.29 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 80c45b6a-3310-4e34-93fb-525eb842dd1c))
-    (instances
-      (project "brain_v1.0"
-        (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#FLG04") (unit 1)
+          (reference "#PWR079") (unit 1)
         )
       )
     )
@@ -4026,7 +3886,7 @@
           (reference "R4") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "R28") (unit 1)
+          (reference "R43") (unit 1)
         )
       )
     )
@@ -4054,7 +3914,7 @@
           (reference "#PWR014") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR063") (unit 1)
+          (reference "#PWR068") (unit 1)
         )
       )
     )
@@ -4082,7 +3942,7 @@
           (reference "#PWR012") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR077") (unit 1)
         )
       )
     )
@@ -4110,7 +3970,7 @@
           (reference "#PWR06") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "#PWR026") (unit 1)
+          (reference "#PWR064") (unit 1)
         )
       )
     )
@@ -4145,7 +4005,7 @@
           (reference "C4") (unit 1)
         )
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268/88dc6c48-fc37-4022-af3c-4da37eedeb92"
-          (reference "C22") (unit 1)
+          (reference "C18") (unit 1)
         )
       )
     )
@@ -4154,7 +4014,7 @@
   (symbol (lib_id "device:C_Small") (at 58.42 109.22 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid feea3f28-57fa-44e6-a9a4-831fbee55dc3)
-    (property "Reference" "C1" (at 60.96 109.22 0)
+    (property "Reference" "C1" (at 60.325 109.22 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22uF" (at 59.69 111.76 0)
