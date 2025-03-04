@@ -8,7 +8,7 @@ After the first ECE 445 lecture, the group assembled to discuss and hash-out via
 
 We got an opportunity to ask the head TA about course logistics and project complexity. His feedback suggested that laptop-to-phone charging was too simple and if we wanted to work on high-voltage charging, every member of the group would need to get trained. Currently, we are assessing what is possible to complete within a semester and still complex enough to aim for being a featured project.
 
-# 01/20/2025
+# 01/22/2025
 
 The group's initial idea of laptop to laptop charging was said to be not probable to complete by TA recommendation, mainly because of the usb-c module and the fact that the Macbook BMS already regulated the battery charge. Also, the TA mentioned how latop charging in general is unidirectional which makes sense.
 
@@ -83,7 +83,7 @@ Here are the deliverables for the breadboard demo, written/recorded by Kathryn:
 The statement of objective for this meeting is to start finalizing the circuit design aspects and get familiar with UART and RFID protocols.
 
 I got a lot of work done on the brain board and started working on the layout for the power board.
-![Initial Brain Schematic v1.0](images/initial_brain.jpg)
+![Initial Brain Schematic v1.0](images/Initial_Brain_Schematic.png)
 
 # 03/03/2025
 
