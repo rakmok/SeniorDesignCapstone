@@ -89,9 +89,9 @@ I got a lot of work done on the brain board and started working on the layout fo
 
 The statement of objective for this meeting was to discuss what we needed to do for the breadboard demo next week and talk with Aishee on more specific questions or logistics. One important thing Kathryn asked was whether the $50/person stipend could be used for any member of the group and the answer was that it cannot. So if one person uses $48 and another member uses $47, we would not be able to buy a part that is $5 between the two of us (at least that's how I understood the situation). The power board is complete and sent out, while the schematic for the brain board was completed over the weekend, both images below.
 
-![Final Brain Schematic v1.0](images/final_brain.jpg)
+![Final Brain Schematic v1.0](images/final_brain.PNG)
 
-![Power Board v1.0](images/power_v1.jpg)
+![Power Board v1.0](images/power_v1.PNG)
 
 The plan for the remaining week is:
 Tuesday: group meeting finish design doc
