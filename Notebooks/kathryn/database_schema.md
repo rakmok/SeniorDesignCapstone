@@ -4,10 +4,10 @@ This document describes the Senior Capstone Project resulting from ECE445 at the
 This document will detail the progress, commands, and details related to the database for Team 30.  
 
 The database schema can be seen below. 
-![Databases](./Databases.png)
+![Databases](./images/Databases.png)
 
 The Tables can be seen below.
-![Tables](./Tables.png)
+![Tables](./images/Tables.png)
 
 These tables can be found by running the following:
 ```
