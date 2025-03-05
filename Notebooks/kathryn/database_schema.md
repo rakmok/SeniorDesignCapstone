@@ -22,8 +22,8 @@ show columns from [table name];
 ```
 
 These are the values and types for each table:
-![users](./users.png)
-![pets](./pets.png)
-![feeding times](./feeding_times.png)
-![history](./history.png)
-![petfood weight](./petfood_weight.png)
+![users](./images/users.png)
+![pets](./images/pets.png)
+![feeding times](./images/feeding_times.png)
+![history](./images/history.png)
+![petfood weight](./images/petfood_weight.png)
