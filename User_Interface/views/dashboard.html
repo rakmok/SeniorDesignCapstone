@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawFeast: Food on Demand</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        body {
+            text-align: left;
+            background-color: #b8dac0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input {
+            background-color: #d2ecd9;
+        }
+
+        img {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            color: rgb(1, 5, 7);
+            width: 50%;
+            height: 50%;
+        }
+
+        a {
+            font-family: 'Times New Roman', Times, serif;
+            color: #475f4d;
+        }
+
+        /* Card styles */
+        .card {
+            background-color: rgb(222, 249, 235);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            text-align: left;
+            margin: 20px auto; /* Center the card */
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h2 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 16px;
+        }
+
+        .card button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .card button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <a href='/logout' style="text-align: center;">Logout</a><br>
+    <h1>Welcome {{username}} to the PawFeast: Food on Demand User Interface!</h1>
+
+    <p>This is the webpage used as the user interface for the University of Illinois Urbana-Champaign ECE445 Group 30 Team Project.</p>
+    
+    <h2>Pets</h2>
+    <a href='/logout'>View Pets</a><br>
+    <a href='/logout'>Add New Pet</a><br>
+    <a href='/logout'>Logout</a><br>
+
+    <!-- Card Section Below the Content -->
+    <div class="card">
+        <h2>Add New Pet</h2>
+        <p>You will need to input the pet's name and RFID tag UIN.</p>
+        <form action="/createPet" method="POST">
+            Pet Name: <input name="petName" type="text" placeholder="Pet Name"/><br>
+            RFID Tag UIN: <input name="rfID_UIN" type="text" placeholder="rfID UIN"/><br>
+            <br>
+            <input value="Create Pet" type="submit" />
+        </form><br>
+        
+        
+    </div>
+</body>
+</html>
