@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawFeast: Food on Demand</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        body {
+            text-align: center;
+            background-color: #6a9976; /* Light blue background */
+        }
+        input {
+            background-color: #d2ecd9; /* Light blue background */
+        }
+        img {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            color: rgb(1, 5, 7);
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the PawFeast: Food on Demand User Interface!</h1>
+    <p>This is the webpage used as the user interface for the University of Illinois Urbana-Champaign ECE445 Group 30 Team Project.</p>
+    <!-- <br> -->
+    <p>Sign in or create an account to get started!</p>
+    <!-- <br> -->
+    <!-- <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L25zODIzMC1pbWFnZS5qcGc.jpg" alt="Pet Image"> -->
+    
+    <form action="./login" method="GET">
+        Username: <input name="username" type="text" placeholder="Username"/><br>
+        Password: <input name="password" type="password" placeholder="Password"/><br>
+        <br>
+        <input value="Login" formaction="./login" type="submit" />
+        <input value="Create New Account" formaction="./create" type="submit" />
+    </form><br>
+    <img src="https://www.americanhumane.org/wp-content/uploads/2024/11/shutterstock_162633491-1440x900.jpg" alt="Pet Image">
+
+    
+
+</body>
+</html>

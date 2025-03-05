@@ -1,0 +1,94 @@
+-- This file will be used to source our tables upon the creation of our database.
+-- This action will only need to be done once at the offset of the project.
+-- The instructions are listed below:
+
+-- if you already have mysql installed, skip these steps
+-- install mysql using the commands:
+    -- brew install mysql
+    -- brew services list
+    --      this should look like:
+    --      ...
+    --      Tapped 2 commands (53 files, 1.5MB).
+    --      Name    Status User File       
+    --      mysql   none
+
+-- brew services start mysql
+    -- if you run ```brew services list``` again, it should now look like 
+    --      ...
+    --      Tapped 2 commands (53 files, 1.5MB).
+    --      Name    Status User File       
+    --      mysql   started kathrynthompson ...
+
+
+-- sudo mysql
+--      this enters the mysql interface
+--
+-- mysql> CREATE DATABASE ece445_project;
+--      create a database object 
+-- Query OK, 1 row affected (0.27 sec)
+--
+-- mysql> SHOW DATABASES;
+--      make sure the database appears
+-- +--------------------+
+-- | Database           |
+-- +--------------------+
+-- | information_schema |
+-- | mysql              |
+-- | performance_schema |
+-- | ece445_project     |
+-- | sys                |
+-- +--------------------+
+-- 5 rows in set (0.22 sec)
+--
+-- **might need to look up equivalent command for this and next
+-- mysql> CREATE USER 'kyt3'@'localhost' IDENTIFIED BY 'password';
+-- Query OK, 0 rows affected (0.02 sec)
+-- 
+-- mysql> GRANT INSERT, UPDATE, SELECT ON ece445_project.* TO 'kyt3'@'localhost';
+-- Query OK, 0 rows affected (0.02 sec)
+
+
+--use ece445_project;
+--source source_ece445_project.txt
+-- show tables;
+-- select * from history; 
+--select * from users;
+
+
+CREATE TABLE users (
+    userID UNSIGNED INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    username VARCHAR(32) UNIQUE NOT NULL,
+    -- password VARCHAR(64) NOT NULL,       -- only storing as hash, do not need plaintext
+    passwordhash VARCHAR(64) NOT NULL       -- hashed, not needed
+);
+
+CREATE TABLE pets (
+    petID UNSIGNED INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    userID UNSIGNED INT NOT NULL, 
+    rfID BIGINT NOT NULL,
+    FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE
+);
+
+CREATE TABLE feeding_times (
+    feedingID UNSIGNED INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    petID UNSIGNED INT NOT NULL,
+    feeding_time TIME NOT NULL, 
+    amount UNSIGNED INT NOT NULL,           -- this would count rotations where each rotation is x cups
+    FOREIGN KEY (petID) REFERENCES pets(petID) ON DELETE CASCADE
+);
+
+CREATE TABLE petfood_weight (
+    petfoodID UNSIGNED INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    feedingID UNSIGNED INT NOT NULL,
+    total_weight FLOAT NOT NULL,            -- this would be the total weight the food should amount to
+    -- amount UNSIGNED INT NOT NULL,        -- this would count rotations where each rotation is x cups
+    FOREIGN KEY (feedingID) REFERENCES feeding_times(feedingID) ON DELETE CASCADE
+);
+
+CREATE TABLE history (
+    historyID UNSIGNED INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    petID UNSIGNED INT NOT NULL,
+    status_update VARCHAR(64) NOT NULL,                 -- find a way to store the amount of food eaten as a weight
+    event_time DATETIME DEFAULT CURRENT_TIMESTAMP,      -- log the time of the event
+    FOREIGN KEY (petID) REFERENCES pets(petID) ON DELETE CASCADE
+);
