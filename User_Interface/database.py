@@ -76,19 +76,69 @@ def getUserID(username):
 
     return userID
 
+def getPetID(username,petname):
+    conn = connect()
+    cursor = conn.cursor()
+    # password_hash = str(md5(password.encode('utf-8')).hexdigest())
+
+    # query = 'select * from users where username = %s and password = %s'
+    # cursor.execute(query, (username, password_hash))
+    userID = getUserID(username)
+
+
+    query = 'select petID from pets where userID = %s and petName = %s'
+    cursor.execute(query, (userID,petname))
+
+    petID = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    return petID
+
 # Create new pet
-def createPet(username, petname, rfid):
+def createPet(username, petname, rfid, petdescription, petfood):
     conn = connect()
     cursor = conn.cursor()
     
     userID = getUserID(username)
     
-    query = 'insert into pets (userID, rfID, petName) values (%s,%s,%s)'
-    cursor.execute(query, (userID, rfid, petname))
+    query = 'insert into pets (userID, rfID, petName, petDescription, petfood) values (%s,%s,%s,%s,%s)'
+    cursor.execute(query, (userID, rfid, petname,petdescription,petfood))
 
     conn.commit()
     cursor.close()
     conn.close()
+
+def createFeedingTime(username, petname, feeding_time, amount):
+    conn = connect()
+    cursor = conn.cursor()
+    
+    # userID = getUserID(username)
+    petID = getPetID(username, petname)
+    
+    query = 'insert into feeding_times (petID, feeding_time, amount) values (%s,%s,%s)'
+    cursor.execute(query, (petID, feeding_time, amount))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+#singular for verification
+def getFeedingTime(username,petname, feeding_time):
+    conn = connect()
+    cursor = conn.cursor()
+
+    petID = getPetID(username,petname)
+    cursor.execute("SELECT * FROM feeding_times WHERE petID = %s and feeding_time = %s", (petID,feeding_time))
+    # pets = cursor.fetchall()
+
+    if cursor.rowcount < 1:
+        return False
+    cursor.close()
+    conn.close()
+    return True
+
 
 # Fetch a single pet for verification
 def getPet(userID, petname):
@@ -107,9 +157,10 @@ def getPet(userID, petname):
     # return pets
 
 # Fetch pets for a user
-def getPets(userID):
+def getPets(username):
     conn = connect()
-    cursor = conn.cursor(dictionary=True)
+    cursor = conn.cursor()
+    userID = getUserID(username)
     cursor.execute("SELECT * FROM pets WHERE userID = %s", (userID,))
     pets = cursor.fetchall()
     cursor.close()
@@ -117,11 +168,13 @@ def getPets(userID):
     return pets
 
 # Fetch feeding times for a pet
-def getFeedingTimes(userID):
+def getFeedingTimes(username):
     conn = connect()
-    cursor = conn.cursor(dictionary=True)
+    cursor = conn.cursor()
+    userID = getUserID(username)
+
     cursor.execute("""
-        SELECT feeding_time, amount FROM feeding_times
+        SELECT petID, feeding_time, amount FROM feeding_times
         WHERE petID IN (SELECT petID FROM pets WHERE userID = %s)
     """, (userID,))
     feeding_times = cursor.fetchall()

@@ -5,7 +5,6 @@ import database
 from bottle import get, post, run, debug, request, response, redirect, view, FormsDict, HTTPError
 
 
-
 app = Bottle()  # Create Bottle app
 
 # Configure session
@@ -60,9 +59,12 @@ def createPet():
     session = request.environ['beaker.session']
     petname = request.forms.get('petName')
     rfID = request.forms.get('rfID_UIN')
+    petdescription =request.forms.get('petDescription')
+    petfood =request.forms.get('petfood')
 
     print(f'in petname is {petname} and rfid is {rfID}')
-    if petname == None or rfID == None:
+    if petname == '' or rfID == '' or petdescription == '' or petfood =='':
+        print("empty field for pet")
         raise HTTPError(400, "Required field is empty")
     
     if 'user' in session:
@@ -70,7 +72,7 @@ def createPet():
 
         username = session['user']
         # this operates on the assumption that the user is logged in, and the rfID is correct
-        database.createPet(username, petname, rfID)
+        database.createPet(username, petname, rfID, petdescription, petfood)
         userID = database.getUserID(username)
         if not database.getPet(userID, petname):
             raise HTTPError(403, "Pet creation unsuccessful")
@@ -86,6 +88,38 @@ def createPet():
     return redirect('/login')
 
 
+@app.route('/createFeedingTime', method='POST')
+def createFeedingTime():
+    session = request.environ['beaker.session']
+    petname = request.forms.get('petName')
+    feedingTime = request.forms.get('feeding_time')
+    amount =request.forms.get('amount')
+
+    print(f'in petname is {petname} and feeding time is {feedingTime} aand amount is {amount}')
+    if  petname == '' or feedingTime == ''  or amount == '':
+        print("empty field for feeding time")
+        raise HTTPError(400, "Required field is empty")
+    
+    if 'user' in session:
+        print("user is logged in and trying to create a new feeding time")
+
+        username = session['user']
+        # this operates on the assumption that the user is logged in, and the rfID is correct
+        database.createFeedingTime(username, petname, feedingTime, amount)
+        # userID = database.getUserID(username)
+        if not database.getFeedingTime(username,petname, feedingTime):
+            raise HTTPError(403, "Creation of Feeding Time was unsuccessful")
+        else:
+            print("Feeding time was successfully added to the database")
+        
+        session.save()
+        return redirect('/dashboard')
+
+    else:
+        print("user is not in session")
+
+    return redirect('/login')
+
 
 @app.route('/dashboard')
 def dashboard():
@@ -94,7 +128,15 @@ def dashboard():
         # return f"Welcome, {session['user']}! <a href='/logout'>Logout</a>"
         # print(f'user is {session['user']}')
         print(f"user is {session['user']}")
-        return template('views/dashboard.html', username=session['user'])
+        pets = database.getPets(session['user'])
+        feedingTimes = database.getFeedingTimes(session['user'])
+        print(f'the pets are {pets}')
+        print(f'the feeding times for {session["user"]} are {feedingTimes}')
+        for pet in pets:
+            print(f'the pet are {pet[3]}')
+            # print(f'the pet are {pet[3]}')
+
+        return template('views/dashboard.html', username=session['user'],pets = pets, feeding_times=feedingTimes)
     else:
         redirect('/')
 
