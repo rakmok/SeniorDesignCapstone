@@ -101,4 +101,5 @@ Record:       During this meeting, we worked on the parts list, cost analysis, a
 
 A detailed description of our database schema can be found at [here](./database_schema.md).
 
-
+This is a screenshot of the current version of the code.
+![User Interface](./images/UI_website.png)
