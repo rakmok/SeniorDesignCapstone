@@ -109,3 +109,11 @@ In addition to the above, we will prepare for the breadboard demo by getting som
 # 03/04/2025
 
 The statement of objective for this meeting is to finish the design document and continue working on the work distribution that we decided on last meeting.
+
+This week, the group finished and submitted the design document. Arash made parts requests from the E-shop and made an inventory for all of the PCB parts on the spreadsheet. We selected how many of each part to buy based on what the part was used for and its frequency—the bootstrap 10 ohm resistor for example is only needed for one power subcircuit so we got much less than 10k ohm resistors, which are used for all of our pullups. Part ordering will be done by today (03/07/2025) as will the RFID schematic. I finished drawing it out, but still need to finetune the LC antenna head, which is something I've never done. I'm using the following resources:
+
+[How to Design PCB Antennas](https://www.proto-electronics.com/blog/how-to-design-pcb-antennas)
+[RFID MFRC522 Datasheet](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/373/MFRC522.pdf)
+[Arduino Forum](https://forum.arduino.cc/t/rfid-antenna/20271/2?_gl=1*1umnrkc*_up*MQ..*_ga*MTQ2NzQwNzMyLjE3NDEyODgyODE.*_ga_NEXN8H46L5*MTc0MTI4ODI3OC4xLjAuMTc0MTI4ODI3OC4wLjAuMTQyNTI2MTU5Ng..)
+
+The brain layout is a work in progress, and Arash will finish the driver circuit this weekend. Kathryn has made her website functional, so now we can test the ESP32 dev board signals (and hopefully send those to the backend through WiFi). Overall, we are a little behind on sending the boards out, but we are focusing on the breadboard demo next week.
