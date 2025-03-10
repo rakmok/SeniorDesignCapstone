@@ -117,3 +117,15 @@ This week, the group finished and submitted the design document. Arash made part
 [Arduino Forum](https://forum.arduino.cc/t/rfid-antenna/20271/2?_gl=1*1umnrkc*_up*MQ..*_ga*MTQ2NzQwNzMyLjE3NDEyODgyODE.*_ga_NEXN8H46L5*MTc0MTI4ODI3OC4xLjAuMTc0MTI4ODI3OC4wLjAuMTQyNTI2MTU5Ng..)
 
 The brain layout is a work in progress, and Arash will finish the driver circuit this weekend. Kathryn has made her website functional, so now we can test the ESP32 dev board signals (and hopefully send those to the backend through WiFi). Overall, we are a little behind on sending the boards out, but we are focusing on the breadboard demo next week.
+
+# 03/10/2025
+
+The statement of objective for this meeting was to work on getting the microcontroller (ESP32-S3-WROOM-1) programmed with something basic and later with RFID and WiFi. We weren't able to program the RFID, but got an LED flashing and got the RFID dev board connected to the ESP32 dev board. The LED wasn't flashing before because we set the wrong pin in the Arduino code, but after we fixed it, we moved the LED (and current-limiting resistor) around and it still blinked properly. There was some terminal error about RTC WDT reset, but looks like that is common and not an issue. Kathryn started looking into getting WiFi working by using her laptop as the server (as opposed to the dev board); we made this choice because then if it works, we know that with our actual brain PCB, the microcontroller should also connect to her laptop properly. Arash finished ordering all of the parts after compiling everything and being in constant discussion with me on how many we actually should buy based on how many we need for each subcircuit.
+
+I decided to move the brain power subcircuits (12-5, 12-3v3, and 5-3v3) onto a separate board for modularity sake and the brain board was starting to get overpopulated. I finished the layout and checked the gerbers on PCBway's site, and they passed, so I sent them to Aishee for the second PCB order. Arash will work on the motor driver schematic, and then pass it off to me for the layout; the hope is to finish that board for the second round as well. Aishee told us that there was a good chance the RFID breakout usage would get approved, so we decided not to spend time making the layout for that board. The schematic is not super complicated except for the antenna, which I discussed in a previous journal entry because of all of the thought that needs to go into it and I'm not an RF expert. The second power board schematic and 3d view are below:
+
+![Power Board LV (for brain) Schematic v1.0](images/powerLV_schematic.png)
+
+![Power Board LV (for brain) 3d View v1.0](images/powerLV_3d.png)
+
+We are gearing up for the breadboard demo on Wednesday. An issue was that both of our dev boards for the breadboard demo came on Friday 1 pm or before, and we didn't get a notification because they didn't get processed, so we didn't get the weekend to test the motor drivers and load cell. We need to give some parts to Greg before break starts, so this was a hindrance.
