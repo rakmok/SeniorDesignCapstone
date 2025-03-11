@@ -111,5 +111,6 @@ Record:       During this meeting, we tested the RFID, Load Cell, and Presence S
 
 A detailed description of our Software code for the Arduino Breadboard Demo can be found on the main branch under SoftwareFiles.
 
-This is a screenshot of the current Dashboard page of the user interface.
-![Dashboard](./images/Dashboard.png)
+This is a screenshot of the current Dashboard and History page of the user interface.
+![Dashboard](./images/Dashboard.png) 
+![History](./images/History.png)
