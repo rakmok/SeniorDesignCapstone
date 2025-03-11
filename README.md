@@ -129,3 +129,11 @@ I decided to move the brain power subcircuits (12-5, 12-3v3, and 5-3v3) onto a s
 ![Power Board LV (for brain) 3d View v1.0](images/powerLV_3d.png)
 
 We are gearing up for the breadboard demo on Wednesday. An issue was that both of our dev boards for the breadboard demo came on Friday 1 pm or before, and we didn't get a notification because they didn't get processed, so we didn't get the weekend to test the motor drivers and load cell. We need to give some parts to Greg before break starts, so this was a hindrance.
+
+# 03/11/2025
+
+Today the group worked mostly individually on their aspects of the project. The main parts for the breadboard demo have not arrived like our breakout boards, so we are hoping to work on it tomorrow. I started working on the brain layout and realized there were some mistakes in the schematic like double test points and I didn't have an LED debugging circuit. There are also two 10k resistors in the Presence Sensor area (one was for the level shifter, the other was for the presence sensor itself, but they are at the same node, so they are essentially in parallel, which is making one redundant). I'll fix that as well as in the layout I realized, the 5V power input connector should go below the JTAG and motor controller ones because that power trace is just going straight down, which is pretty bad. I'm trying not to let the traces cross under each other too much, but it's pretty difficult. Kathryn was working on RFID and then WiFi for two hours, while I was giving moral support and working on my brain layout—she was able to get RFID code working after realizing our tags are incompatible with the FRC522 board, so we are buying new tags. The previous ones were rented from the class supply. Arash is working on the motor driver board right now and we collaborated on some schematic conventions etc. Overall, we are looking to send out three boards this board run: brain, second power, and motor driver, while concurrently, preparing for our breadboard demo on Wednesday.
+
+![Final Brain Schematic v1.0](images/final_brain_schematic.png)
+
+![Initial Incomplete Brain Layout v1.0](images/initial_brain_layout.png)
