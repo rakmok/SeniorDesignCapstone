@@ -94,7 +94,7 @@ Date:         _3/4/2025_
 Objectives:   The goal of this meeting talk to Aishee Mondal about our power and brain breadboard in order to order the first round of PCBs.  
 Record:       During this meeting, talked with Aishee about deliverables, went over schematics, requested stencils for the PCBs, discussed parts ordering and immediate plan.  
 
-## Meeting #13
+## Meeting #14
 Date:         _3/5/2025_   
 Objectives:   The goal of this meeting finish the design document (due 3/6).  
 Record:       During this meeting, we worked on the parts list, cost analysis, and Requirements and Verification Table. Outside of the parts list, the design document was finished. We will begin majority of parts ordering this weekend along with testing of sensors and MCU/ESP32 chip. I worked on the user interface. The database is fully created and connected with our backend. The backend is connected to our frontend. As of now, we are able to create users, login, and logout.  
@@ -103,3 +103,13 @@ A detailed description of our database schema can be found at [here](./database_
 
 This is a screenshot of the current version of the code.
 ![User Interface](./images/UI_website.png)
+
+## Meeting #15
+Date:         _3/11/2025_   
+Objectives:   The goal of this meeting was to finish preparing for the breadboard demo.   
+Record:       During this meeting, we tested the RFID, Load Cell, and Presence Sensor Code on the Arduino for the breadboard demo. We have successfully gotten the code to work and combined them into one file.  
+
+A detailed description of our Software code for the Arduino Breadboard Demo can be found on the main branch under SoftwareFiles.
+
+This is a screenshot of the current Dashboard page of the user interface.
+![Dashboard](./images/Dashboard.png)
