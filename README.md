@@ -137,3 +137,7 @@ Today the group worked mostly individually on their aspects of the project. The 
 ![Final Brain Schematic v1.0](images/final_brain_schematic.png)
 
 ![Initial Incomplete Brain Layout v1.0](images/initial_brain_layout.png)
+
+# 03/12/2025
+
+The group met and did all of the work for the breadboard demo now that our parts have arrived. This fulfilled the statement of objective for the meeting. The group was able to get RFID sensing with one tag, get the motor running, get the load cells measuring, and get the presence sensor reading whether the connection was broken or unbroken (depending on if there was an object in between).
