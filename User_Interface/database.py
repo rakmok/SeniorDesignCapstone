@@ -4,7 +4,7 @@ from bottle import FormsDict
 from hashlib import md5
 
 
-# Connect to MySQL
+# Connect to MySQL database
 def connect():
     return mdb.connect(
         host="localhost",
@@ -13,14 +13,11 @@ def connect():
         database="ece445_project"
     )
 
-# Fetch user by username
+# Fetch user by username to see if the user exists
 def fetchUser(username):
     conn = connect()
     cursor = conn.cursor()
-    # password_hash = str(md5(password.encode('utf-8')).hexdigest())
-
-    # query = 'select * from users where username = %s and password = %s'
-    # cursor.execute(query, (username, password_hash))
+    
     query = 'select username from users where username = %s'
     cursor.execute(query, (username,))
 
@@ -30,16 +27,15 @@ def fetchUser(username):
     conn.close()
     return True
     
-    # return FormsDict(cursor.fetchone())
 
-
-# Validate user login
+# Validate user login (to see if account creation worked)
 def validateUser(username, password):
     conn = connect()
     cursor = conn.cursor()
     password_hash = str(md5(password.encode('utf-8')).hexdigest())
 
-    cursor.execute("SELECT * FROM users WHERE username = %s AND passwordhash = %s", (username, password_hash))  # Assume passwordhash is stored
+    query = "select * from users where username = %s and passwordhash = %s"
+    cursor.execute(query, (username, password_hash))  # Assume passwordhash is stored
     user = cursor.fetchone()
 
     cursor.close()
@@ -59,13 +55,11 @@ def createUser(username, password):
     cursor.close()
     conn.close()
 
+# given the username, get the userID
 def getUserID(username):
     conn = connect()
     cursor = conn.cursor()
-    # password_hash = str(md5(password.encode('utf-8')).hexdigest())
-
-    # query = 'select * from users where username = %s and password = %s'
-    # cursor.execute(query, (username, password_hash))
+    
     query = 'select userID from users where username = %s'
     cursor.execute(query, (username,))
 
@@ -73,18 +67,14 @@ def getUserID(username):
 
     cursor.close()
     conn.close()
-
     return userID
 
+# get the petID given the user and the petname from the session
 def getPetID(username,petname):
     conn = connect()
     cursor = conn.cursor()
-    # password_hash = str(md5(password.encode('utf-8')).hexdigest())
-
-    # query = 'select * from users where username = %s and password = %s'
-    # cursor.execute(query, (username, password_hash))
+    
     userID = getUserID(username)
-
 
     query = 'select petID from pets where userID = %s and petName = %s'
     cursor.execute(query, (userID,petname))
@@ -96,7 +86,7 @@ def getPetID(username,petname):
 
     return petID
 
-# Create new pet
+# Create new pet for a user
 def createPet(username, petname, rfid, petdescription, petfood):
     conn = connect()
     cursor = conn.cursor()
@@ -110,11 +100,11 @@ def createPet(username, petname, rfid, petdescription, petfood):
     cursor.close()
     conn.close()
 
+# create a feeding time
 def createFeedingTime(username, petname, feeding_time, amount):
     conn = connect()
     cursor = conn.cursor()
     
-    # userID = getUserID(username)
     petID = getPetID(username, petname)
     
     query = 'insert into feeding_times (petID, feeding_time, amount) values (%s,%s,%s)'
@@ -124,14 +114,15 @@ def createFeedingTime(username, petname, feeding_time, amount):
     cursor.close()
     conn.close()
 
-#singular for verification
+# singular for verification of feeding time creation
 def getFeedingTime(username,petname, feeding_time):
     conn = connect()
     cursor = conn.cursor()
 
     petID = getPetID(username,petname)
-    cursor.execute("SELECT * FROM feeding_times WHERE petID = %s and feeding_time = %s", (petID,feeding_time))
-    # pets = cursor.fetchall()
+
+    query = "select * from feeding_times where petID = %s and feeding_time = %s"
+    cursor.execute(query, (petID,feeding_time))
 
     if cursor.rowcount < 1:
         return False
@@ -140,11 +131,13 @@ def getFeedingTime(username,petname, feeding_time):
     return True
 
 
-# Fetch a single pet for verification
+# get the single pet for verification to make sure the pet was created correctly
 def getPet(userID, petname):
     conn = connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM pets WHERE userID = %s and petname = %s", (userID,petname))
+
+    query = "select * from pets where userID = %s and petname = %s"
+    cursor.execute(query, (userID,petname))
     # pets = cursor.fetchall()
 
     if cursor.rowcount < 1:
@@ -156,16 +149,31 @@ def getPet(userID, petname):
     # conn.close()
     # return pets
 
-# Fetch pets for a user
+# get the pets for a given user
 def getPets(username):
     conn = connect()
     cursor = conn.cursor()
     userID = getUserID(username)
-    cursor.execute("SELECT * FROM pets WHERE userID = %s", (userID,))
+
+    query = "select * from pets where userID = %s"
+    cursor.execute(query, (userID,))
     pets = cursor.fetchall()
     cursor.close()
     conn.close()
     return pets
+
+# delete the pet 
+def deletePet(username, petname):
+    conn = connect()
+    cursor = conn.cursor()
+    userID = getUserID(username)
+
+    query = "delete from pets where userID = %s and petname = %s"
+    cursor.execute(query, (userID,petname))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
 
 # Fetch feeding times for a pet
 def getFeedingTimes(username):
@@ -173,10 +181,11 @@ def getFeedingTimes(username):
     cursor = conn.cursor()
     userID = getUserID(username)
 
-    cursor.execute("""
-        SELECT petID, feeding_time, amount FROM feeding_times
-        WHERE petID IN (SELECT petID FROM pets WHERE userID = %s)
-    """, (userID,))
+    query = """
+        select petID, feeding_time, amount from feeding_times
+        where petID in (select petID from pets where userID = %s)
+    """
+    cursor.execute(query, (userID,))
     feeding_times = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -185,11 +194,13 @@ def getFeedingTimes(username):
 # Fetch pet details
 def getPetDetails(petID, userID):
     conn = connect()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("""
-        SELECT * FROM pets WHERE petID = %s AND userID = %s
-    """, (petID, userID))
+    cursor = conn.cursor()
+
+    query = "select * from pets where petID = %s and userID = %s"
+    cursor.execute(query, (petID, userID))
+
     pet = cursor.fetchone()
+    
     cursor.close()
     conn.close()
     return pet
@@ -197,9 +208,45 @@ def getPetDetails(petID, userID):
 # Fetch feeding history for a pet
 def getFeedingHistory(petID):
     conn = connect()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM history WHERE petID = %s", (petID,))
+    cursor = conn.cursor()
+
+    query = "select * from history where petID = %s limit 15"
+    cursor.execute(query, (petID,))
+
+    history = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+    return history
+
+
+# Fetch feeding history for a pet
+def getHistory(username):
+    conn = connect()
+    cursor = conn.cursor()
+
+    userID = getUserID(username)
+    query = ''' 
+                select petID, status_update, event_time from history 
+                where petID in (select petID from pets where userID  = %s) limit 15
+            '''
+    cursor.execute(query, (userID,))
+
     history = cursor.fetchall()
     cursor.close()
     conn.close()
     return history
+
+# this will create a history entry and add it to the database
+def createHistoryEntry(username, petname, data, time):
+    conn = connect()
+    cursor = conn.cursor()
+    
+    petID = getPetID(username, petname)
+    
+    query = 'insert into history (petID, status_update, event_time) values (%s,%s,%s)'
+    cursor.execute(query, (petID, data, time))
+
+    conn.commit()
+    cursor.close()
+    conn.close()

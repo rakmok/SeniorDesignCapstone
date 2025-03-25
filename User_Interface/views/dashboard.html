@@ -8,17 +8,14 @@
         h1 {
             text-align: center;
         }
-
         body {
             text-align: left;
             background-color: #b8dac0;
             font-family: 'Times New Roman', Times, serif;
         }
-
         input {
             background-color: #d2ecd9;
         }
-
         img {
             font-family: 'Times New Roman', Times, serif;
             font-size: 16px;
@@ -26,13 +23,10 @@
             width: 50%;
             height: 50%;
         }
-
         a {
             font-family: 'Times New Roman', Times, serif;
             color: #475f4d;
         }
-
-        
         .card-container {
             display: grid;
             grid-template-columns: repeat(3, minmax(200px, 1fr)); /* Max 3 cards per row */
@@ -41,7 +35,17 @@
             max-width: 95%; /* Adjust as needed */
             margin: auto; /* Centers the container horizontally */
         }
-
+        .history-card {
+            width: 92%;
+            margin: auto;
+            /* width: 350px; Adjust width based on your design */
+            padding: 15px;
+            background-color: rgb(222, 249, 235);
+            border: 1px solid rgb(188, 213, 200);
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgb(188, 213, 200);
+            transition: transform 0.3s ease-in-out;
+        }
         .card {
             width: 90%;
             /* width: 350px; Adjust width based on your design */
@@ -73,13 +77,15 @@
     </style>
 </head>
 <body>
-    <a href='/logout' style="text-align: center;">Logout</a><br>
+    <a href='/logout' >Logout</a><br>
+    <a href='/history' >History Page</a><br>
+
     <h1>Welcome {{username}} to the PawFeast: Food on Demand User Interface!</h1>
 
     <p>This is the webpage used as the user interface for the University of Illinois Urbana-Champaign ECE445 Group 30 Team Project.</p>
     
-    <h2>Pets</h2>
 
+    <h2>Pets</h2>
     <div class="card-container">
         <div class="card">
             <h2>Add New Pet</h2>
@@ -107,9 +113,8 @@
         % for pet in pets:
             <div class="card">
                 <h2>{{pet[3]}}</h2>
-                <p>
-                    {{pet[4]}}<br><br>
-                    Dog Food: {{ pet[5] }}<br><br>
+                {{pet[4]}}<br><br>
+                Dog Food: {{ pet[5] }}<br><br>
                 <strong>Feeding Times:</strong>
                 <ul>
                     % for feeding in feeding_times:
@@ -119,6 +124,11 @@
                         % end
                     % end
                 </ul>
+                <!-- <a href='/delete'>Delete Dog</a><br> -->
+                <form action="/deletepet" method="POST">
+                    <input name="petName" type="hidden" value="{{pet[3]}}"/>
+                    <input value="Delete Pet" type="submit" />
+                </form>
             </div>
         % end
         <!-- <div class="card">Card 1</div>
