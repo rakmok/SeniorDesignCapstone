@@ -141,3 +141,14 @@ Today the group worked mostly individually on their aspects of the project. The 
 # 03/12/2025
 
 The group met and did all of the work for the breadboard demo now that our parts have arrived. This fulfilled the statement of objective for the meeting. The group was able to get RFID sensing with one tag, get the motor running, get the load cells measuring, and get the presence sensor reading whether the connection was broken or unbroken (depending on if there was an object in between).
+
+# 03/31/2025
+
+It's been a busy couple of weeks. Our first and second order PCBs have arrived and the team is working on populating the boards. We used the DDM Novastar GF-B-HT Reflow Oven for the first time with Chipquik TS391SNL50 (Sn96.5/Ag3.0/Cu0.5) solder paste with a temperature of 240C, a Ta of 180 seconds, and a Tb of 240 seconds. We still need some more parts, so we have not been able to test if the MCU is propely placed and the joints are well-connected, but visually speaking, everything looks aligned. The ESP32 Wroom 32E dev board has arrived, so Kathryn is working on moving the Arduino code from the RFID to the dev board and Arash is working on moving the motor controller Arduino code to that. This will tell us whether the brain board I made made and assembled is working properly by unit testing on the dev board first.
+
+I successfully created the 3s2p Li-ion battery pack (photos below), and tested the voltage on that, so looks like that should be good to go. The BMS is 3rd party, so hopefully it is not faulty.
+
+![Spot-welded Pack](images/battery_spotweld.jpg)
+![Wired Pack](images/battery_wiring.jpg)
+![Battery Pack with Foam Padding](images/battery_foam.jpg)
+![Final Battery Pack](images/battery_shrink.jpg)
