@@ -3539,6 +3539,10 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid cfb676fc-f7f6-452c-bcc2-d332824cafa2)
   )
+  (label "GPIO0" (at 229.87 25.4 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid d27ae3c6-4add-4cf5-8eea-46ba860d9b67)
+  )
   (label "TDI" (at 120.015 182.245 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid d7777efc-01c4-418c-9b2a-bbe72c33e2cb)
@@ -3601,7 +3605,7 @@
     )
     (pin "1" (uuid 980aae9c-6eef-440e-89a3-0a8e72781f96))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#FLG02") (unit 1)
         )
@@ -3637,7 +3641,7 @@
     (pin "5" (uuid 0049539e-2353-45ba-b131-4e544895bb32))
     (pin "6" (uuid e2fb069c-465c-49f1-b8fc-b310a947bf4c))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J8") (unit 1)
         )
@@ -3669,7 +3673,7 @@
     (pin "1" (uuid 4b9784cb-07db-4c05-9e92-a013b21fc69a))
     (pin "2" (uuid 519fcdd5-ba74-4fa0-942e-9a138207a422))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "C1") (unit 1)
         )
@@ -3694,7 +3698,7 @@
     )
     (pin "1" (uuid 130b3631-4858-4017-aaa2-80343facbeaa))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR05") (unit 1)
         )
@@ -3726,7 +3730,7 @@
     (pin "1" (uuid effe9155-4909-4cb9-b690-dbeb2c126502))
     (pin "2" (uuid 7b8f10ff-42dd-4780-ab29-471911d33acd))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J9") (unit 1)
         )
@@ -3751,7 +3755,7 @@
     )
     (pin "1" (uuid e3234bb1-d485-4a7c-9b9d-5e72fcd1aeee))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#FLG03") (unit 1)
         )
@@ -3782,7 +3786,7 @@
     )
     (pin "1" (uuid 58652c00-a9a3-46e8-8669-0879b9fb5d89))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "TP6") (unit 1)
         )
@@ -3814,7 +3818,7 @@
     (pin "1" (uuid 0118e320-3c7c-4f2c-ac12-1f8b58aba9f9))
     (pin "2" (uuid d923dd12-da04-4062-a15e-9dc443a7b6a2))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J13") (unit 1)
         )
@@ -3852,7 +3856,7 @@
     (pin "7" (uuid 4f31f958-96d0-4235-bd77-1ea6b376f731))
     (pin "8" (uuid 3f06fa61-fa00-4b58-bfff-8c50138b9f97))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J10") (unit 1)
         )
@@ -3884,7 +3888,7 @@
     (pin "1" (uuid 3666866b-6603-465e-9f7d-bc3d2dba57db))
     (pin "2" (uuid 0ba85db1-69f1-4216-84d5-286ad699de10))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R9") (unit 1)
         )
@@ -3909,7 +3913,7 @@
     )
     (pin "1" (uuid c15e6647-4251-4965-a98c-4c4d3a76da51))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR012") (unit 1)
         )
@@ -3941,7 +3945,7 @@
     (pin "1" (uuid 40499364-6bec-4ad0-b787-f2ab4289f44f))
     (pin "2" (uuid cec7ddc2-9410-486d-b068-dc6391d6b2b1))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R2") (unit 1)
         )
@@ -3966,7 +3970,7 @@
     )
     (pin "1" (uuid b5b332ac-f9ae-4ae6-bfbf-31c071a5975d))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR029") (unit 1)
         )
@@ -3998,7 +4002,7 @@
     (pin "1" (uuid 91882334-ea26-4fe0-a82e-8ac459577587))
     (pin "2" (uuid e341115c-5cdc-4eb0-81b7-6e663dde82fb))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R24") (unit 1)
         )
@@ -4034,7 +4038,7 @@
     (pin "5" (uuid c5392186-709b-4ced-be12-c9214a917db6))
     (pin "6" (uuid d62b1bec-ec34-433a-967b-a8fa888c5982))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J6") (unit 1)
         )
@@ -4059,7 +4063,7 @@
     )
     (pin "1" (uuid 26d38df0-d9df-475c-a30a-44ae3e3f3a5c))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR027") (unit 1)
         )
@@ -4091,7 +4095,7 @@
     (pin "1" (uuid 6bebeb22-dffa-4c2e-b33f-0057e7122d53))
     (pin "2" (uuid 297270a9-ef93-47fc-a458-5fbb0ea13e88))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R33") (unit 1)
         )
@@ -4116,7 +4120,7 @@
     )
     (pin "1" (uuid 617700a2-10e9-41d2-a8d2-2665dc3c0ba4))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR020") (unit 1)
         )
@@ -4151,7 +4155,7 @@
     (pin "4" (uuid d09bec90-9d55-42b2-89b9-dcb722dfdb64))
     (pin "5" (uuid 11f4dbbc-e098-47f0-8d08-3f6659742e67))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J11") (unit 1)
         )
@@ -4205,7 +4209,7 @@
     (pin "2" (uuid a424b420-88da-4f61-b53b-8675134085b4))
     (pin "3" (uuid e9e448c2-6932-4103-9d54-88f08c265c02))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "Q3") (unit 1)
         )
@@ -4237,7 +4241,7 @@
     (pin "1" (uuid a4eb5737-608a-4425-83b4-8f10fa3b022b))
     (pin "2" (uuid 1b7181e2-fba4-40ba-a1d5-9dc1cc80ab6b))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "D2") (unit 1)
         )
@@ -4269,7 +4273,7 @@
     (pin "1" (uuid 17dfc23b-4a6d-4a25-9d99-040fe2977296))
     (pin "2" (uuid 7c7c9c89-0aff-47cc-8812-cde761e595ae))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J5") (unit 1)
         )
@@ -4295,7 +4299,7 @@
     (pin "1" (uuid 335b6206-b3f7-453b-ae4c-788fa8255573))
     (pin "2" (uuid cb584416-ed31-4055-ba3c-d08a6af109e6))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R28") (unit 1)
         )
@@ -4329,7 +4333,7 @@
     (pin "3" (uuid ccf27416-4e5d-49ec-89bc-3434fed172ec))
     (pin "4" (uuid 6a6f65d9-f6e4-49aa-8b86-53dfd7d7352f))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J4") (unit 1)
         )
@@ -4354,7 +4358,7 @@
     )
     (pin "1" (uuid 97b9d7d8-ca13-4921-bf0d-205bee5c8fe9))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR050") (unit 1)
         )
@@ -4380,7 +4384,7 @@
     (pin "1" (uuid 2fb700df-0266-4da1-82b2-95778ed960ef))
     (pin "2" (uuid 4893bd35-9aab-49b7-b9ac-42afc392fcc7))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R27") (unit 1)
         )
@@ -4412,7 +4416,7 @@
     (pin "1" (uuid 9bbfb308-1204-455f-ac9b-31661a0f31a5))
     (pin "2" (uuid 94a3b251-1bcb-46f1-b435-c8c8cae4c100))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "C5") (unit 1)
         )
@@ -4437,7 +4441,7 @@
     )
     (pin "1" (uuid 46177019-9172-47e1-88c4-0581cfb9126d))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR01") (unit 1)
         )
@@ -4491,7 +4495,7 @@
     (pin "2" (uuid cf60f6ee-d681-403a-98cd-e2c7da885949))
     (pin "3" (uuid d6769a99-7971-4627-8a06-324c350e90e2))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "Q7") (unit 1)
         )
@@ -4516,7 +4520,7 @@
     )
     (pin "1" (uuid 42597833-6764-4a61-90c7-b363342d2ede))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR035") (unit 1)
         )
@@ -4541,7 +4545,7 @@
     )
     (pin "1" (uuid 50ca12c5-03a4-4e03-83d7-ac30f2389e74))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR022") (unit 1)
         )
@@ -4573,7 +4577,7 @@
     (pin "1" (uuid a83726ed-dbef-404d-8242-e1beaff53176))
     (pin "2" (uuid a4d30192-4ae4-4906-934f-7566ba1f9811))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R11") (unit 1)
         )
@@ -4604,7 +4608,7 @@
     )
     (pin "1" (uuid 24750bd1-d2a0-44e9-9c4a-3db598db5ab6))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "TP8") (unit 1)
         )
@@ -4636,7 +4640,7 @@
     (pin "1" (uuid 535addc5-c301-4241-99d5-78306d27d526))
     (pin "2" (uuid d2d47176-aede-43c4-8ceb-75b4d3f933db))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R10") (unit 1)
         )
@@ -4661,7 +4665,7 @@
     )
     (pin "1" (uuid d1183300-3a2c-430d-9087-4dbe9b84eadf))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR015") (unit 1)
         )
@@ -4686,7 +4690,7 @@
     )
     (pin "1" (uuid ed7a7c15-05d1-48ab-a1fb-e76e4d4d2304))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR016") (unit 1)
         )
@@ -4719,7 +4723,7 @@
     (pin "2" (uuid ee30dc48-8029-4c9c-98a4-fda297da6d08))
     (pin "3" (uuid 0d45663a-1e54-408f-aea2-938eabd18cfc))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "Q2") (unit 1)
         )
@@ -4750,7 +4754,7 @@
     )
     (pin "1" (uuid 89dcfead-9376-4365-b8f7-9f8f3a3d2a5e))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "TP4") (unit 1)
         )
@@ -4775,7 +4779,7 @@
     )
     (pin "1" (uuid e556f32c-b7eb-491d-bd75-1b782e6a94b2))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR09") (unit 1)
         )
@@ -4807,7 +4811,7 @@
     (pin "1" (uuid d1f05965-479d-4627-8744-4a69d698dfc4))
     (pin "2" (uuid da07d49c-8a7c-4149-be1c-5d9b7ecfa3a0))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R6") (unit 1)
         )
@@ -4832,7 +4836,7 @@
     )
     (pin "1" (uuid e620a92e-8569-4bfa-bb30-788c02ee8312))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR038") (unit 1)
         )
@@ -4865,7 +4869,7 @@
     (pin "2" (uuid 1f7e397c-e8d9-4a62-84f1-c3396be71cd6))
     (pin "3" (uuid 25f0334e-4235-4d06-9bec-3bd5484e8cc6))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "JP1") (unit 1)
         )
@@ -4890,7 +4894,7 @@
     )
     (pin "1" (uuid c3dcefe2-ba6d-4e44-a07f-96c225836f62))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR034") (unit 1)
         )
@@ -4922,7 +4926,7 @@
     (pin "1" (uuid e96aae40-4704-47de-8c9a-1a9eb563bea7))
     (pin "2" (uuid 220a8960-f252-4433-a1b7-e47ecf4dde2a))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R7") (unit 1)
         )
@@ -4954,7 +4958,7 @@
     (pin "1" (uuid 64449d4c-373a-4590-906e-3ef1405ca744))
     (pin "2" (uuid d6295ace-934f-4021-9d60-b753aeab659f))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R19") (unit 1)
         )
@@ -4979,7 +4983,7 @@
     )
     (pin "1" (uuid 376d11fb-dee1-4167-83bb-b1bd6bee2b42))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR042") (unit 1)
         )
@@ -5004,7 +5008,7 @@
     )
     (pin "1" (uuid da0ada13-cc8a-404c-a993-e0599a56e4f8))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR023") (unit 1)
         )
@@ -5029,7 +5033,7 @@
     )
     (pin "1" (uuid 420ea741-85de-4a23-a500-3e90cebc6bd4))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR024") (unit 1)
         )
@@ -5054,7 +5058,7 @@
     )
     (pin "1" (uuid 143ef78d-2320-4a49-bbae-2f21927429d7))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR031") (unit 1)
         )
@@ -5084,7 +5088,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "H3") (unit 1)
         )
@@ -5116,7 +5120,7 @@
     (pin "1" (uuid e6b15e33-fb25-42b9-a23b-a14c8cf297cc))
     (pin "2" (uuid 9cbbbef4-1459-47fb-897f-a2ff758312eb))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R12") (unit 1)
         )
@@ -5148,7 +5152,7 @@
     (pin "1" (uuid 4350615b-bda2-40ac-ac53-42740ac355dd))
     (pin "2" (uuid b8feafa5-d2bb-42ac-b6a4-75fa574d47a6))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "D4") (unit 1)
         )
@@ -5173,7 +5177,7 @@
     )
     (pin "1" (uuid 4cbbcc61-2dc8-4d6b-9283-9bde6d1d2c7f))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR053") (unit 1)
         )
@@ -5206,7 +5210,7 @@
     (pin "2" (uuid e8b4b184-eeaa-4ed4-9672-0a76ca4c67d5))
     (pin "3" (uuid 3a0a5379-1047-43e9-b059-de15e2e16bb2))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "Q1") (unit 1)
         )
@@ -5231,7 +5235,7 @@
     )
     (pin "1" (uuid 1951d73f-4f6a-4721-ac23-18822232c7e5))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR037") (unit 1)
         )
@@ -5256,7 +5260,7 @@
     )
     (pin "1" (uuid 41ef8a8a-cfd0-4292-8c32-4c4e69fe93d0))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR017") (unit 1)
         )
@@ -5281,7 +5285,7 @@
     )
     (pin "1" (uuid 87362b89-10d8-4471-8433-45d4fbaba417))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR04") (unit 1)
         )
@@ -5313,7 +5317,7 @@
     (pin "1" (uuid 517c5171-95b3-4de2-b45f-e5cf25100f5b))
     (pin "2" (uuid fb1bd3e6-4cb9-472f-9bec-097552694817))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "SW1") (unit 1)
         )
@@ -5338,7 +5342,7 @@
     )
     (pin "1" (uuid 23453ca4-4416-4518-bfca-1132894d7666))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#FLG01") (unit 1)
         )
@@ -5363,7 +5367,7 @@
     )
     (pin "1" (uuid 70f1d2c6-6517-4c1a-aa96-8079ae47289d))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR051") (unit 1)
         )
@@ -5395,7 +5399,7 @@
     (pin "1" (uuid c21d146e-ace7-4a51-8292-9ce5e62010c5))
     (pin "2" (uuid 0ce41b71-3881-4b9f-b884-fed5beb80292))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "C4") (unit 1)
         )
@@ -5420,7 +5424,7 @@
     )
     (pin "1" (uuid 1a09eb11-0975-4769-8122-b69e7e20d3a7))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR02") (unit 1)
         )
@@ -5452,7 +5456,7 @@
     (pin "1" (uuid 66c43c6e-eb15-42f6-a8ad-36368c59e353))
     (pin "2" (uuid 69236fe4-4849-4e07-893c-dca03075f484))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "C6") (unit 1)
         )
@@ -5477,7 +5481,7 @@
     )
     (pin "1" (uuid d0749e4a-0d7c-4c32-9150-116629a35aee))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR049") (unit 1)
         )
@@ -5502,7 +5506,7 @@
     )
     (pin "1" (uuid cd778d6c-ba43-4fd6-9190-c82a70345f62))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR03") (unit 1)
         )
@@ -5534,7 +5538,7 @@
     (pin "1" (uuid 1f7b1115-05b4-4abb-8422-07c376af8df4))
     (pin "2" (uuid dec8c898-b234-4f2a-8e74-f981f0a319e4))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "C7") (unit 1)
         )
@@ -5559,7 +5563,7 @@
     )
     (pin "1" (uuid 0ee32fd8-c1a0-41f4-90e1-0dd58ebcf595))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR014") (unit 1)
         )
@@ -5591,7 +5595,7 @@
     (pin "1" (uuid d2637efc-cc5b-425d-ab4f-d15c23f04936))
     (pin "2" (uuid 2a5b97fe-d574-4093-b8ef-df95dfda194d))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R23") (unit 1)
         )
@@ -5623,7 +5627,7 @@
     (pin "1" (uuid f0811302-32d4-4e4b-a017-5b043ab0291f))
     (pin "2" (uuid a880ec7a-a35a-46b9-b289-9ee979bb81a4))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "D3") (unit 1)
         )
@@ -5648,7 +5652,7 @@
     )
     (pin "1" (uuid 2446c09a-7923-407c-ade4-edf4d4f9613a))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR026") (unit 1)
         )
@@ -5679,7 +5683,7 @@
     )
     (pin "1" (uuid a89236aa-5320-4c93-a58d-7898e8a8863e))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "TP1") (unit 1)
         )
@@ -5704,7 +5708,7 @@
     )
     (pin "1" (uuid fd9bfd81-f410-45e9-8849-35d61c25a370))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR048") (unit 1)
         )
@@ -5729,7 +5733,7 @@
     )
     (pin "1" (uuid 6b8e11cd-856a-4086-84aa-e72f22d92141))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR039") (unit 1)
         )
@@ -5784,7 +5788,7 @@
     (pin "8" (uuid d51e6630-d378-42da-ae82-6318188c5481))
     (pin "9" (uuid 89aaac8c-2a67-4fa3-ac23-290ae045bfec))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "U2") (unit 1)
         )
@@ -5809,7 +5813,7 @@
     )
     (pin "1" (uuid 32de9154-c1f1-4b02-803b-1a2edf5b6015))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR08") (unit 1)
         )
@@ -5834,7 +5838,7 @@
     )
     (pin "1" (uuid 017dcc03-aa2a-4f8b-8ad5-850b78e8d25a))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR013") (unit 1)
         )
@@ -5866,7 +5870,7 @@
     (pin "1" (uuid 5f713088-578d-48d2-85a5-04176d954d64))
     (pin "2" (uuid cb845fca-eb22-4d23-a5c2-58d063061c43))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R5") (unit 1)
         )
@@ -5897,7 +5901,7 @@
     )
     (pin "1" (uuid 29633980-8da3-4ab2-8603-cd90912f9f97))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "TP5") (unit 1)
         )
@@ -5929,7 +5933,7 @@
     (pin "1" (uuid e6eebf9b-fa29-463a-b7f8-bd9b5db29b13))
     (pin "2" (uuid 37e5137b-a9cd-43dc-be3f-9497046f8dea))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R32") (unit 1)
         )
@@ -5961,7 +5965,7 @@
     (pin "1" (uuid 2acd2181-315f-40fc-a99b-e4ec602c5101))
     (pin "2" (uuid 013a462a-e1b6-45bc-b846-eb6b4394f978))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "D1") (unit 1)
         )
@@ -5986,7 +5990,7 @@
     )
     (pin "1" (uuid 28f74e0d-c54f-4bec-ad16-67cef382c284))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR058") (unit 1)
         )
@@ -6016,7 +6020,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "H1") (unit 1)
         )
@@ -6048,7 +6052,7 @@
     (pin "1" (uuid 3b6c1518-ad90-483f-bdbe-ee594c97633e))
     (pin "2" (uuid de6140ac-eef2-4fa2-9726-8479c9e04763))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R8") (unit 1)
         )
@@ -6080,7 +6084,7 @@
     (pin "1" (uuid c8188486-1dd7-4880-8e04-76e0bf7f9362))
     (pin "2" (uuid ab21c984-86a0-4d9f-93b2-95cc7c668a5f))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R25") (unit 1)
         )
@@ -6113,7 +6117,7 @@
     (pin "2" (uuid a0bb2adb-ced7-4cee-8b3d-fc97a087c4c4))
     (pin "3" (uuid 346ac183-53d7-4c5d-9806-148c429f9350))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J3") (unit 1)
         )
@@ -6145,7 +6149,7 @@
     (pin "1" (uuid 3d3f08e8-1081-4873-837e-2484c4991eb4))
     (pin "2" (uuid 07b67fab-18cb-4b26-92f5-38b40266189a))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J14") (unit 1)
         )
@@ -6177,7 +6181,7 @@
     (pin "1" (uuid d8b3db13-5708-4771-ac50-9b789f6f04cb))
     (pin "2" (uuid cc752b48-b05f-40fc-af69-873117ed44f2))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R14") (unit 1)
         )
@@ -6209,7 +6213,7 @@
     (pin "1" (uuid d475e676-ab8c-4136-9a8e-6dbe9fafa53e))
     (pin "2" (uuid ab8405c9-3ed6-46b0-8d11-65c496d7e4bc))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R30") (unit 1)
         )
@@ -6234,7 +6238,7 @@
     )
     (pin "1" (uuid 585b1c7e-d426-4789-b78e-6b6299854b3e))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR019") (unit 1)
         )
@@ -6259,7 +6263,7 @@
     )
     (pin "1" (uuid 2a1ba4d6-a314-47cc-97f9-f0cd0e08294a))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR045") (unit 1)
         )
@@ -6293,7 +6297,7 @@
     (pin "3" (uuid 662ed280-b35e-4d9d-b743-9be874142763))
     (pin "4" (uuid bbed714f-8214-4d17-82c1-1503e389860b))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J15") (unit 1)
         )
@@ -6318,7 +6322,7 @@
     )
     (pin "1" (uuid 71d4725a-bbd8-4881-beb1-0881f0ed1068))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR044") (unit 1)
         )
@@ -6343,7 +6347,7 @@
     )
     (pin "1" (uuid 4b51bf4b-ad6c-482e-bb56-9ab969edc073))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR030") (unit 1)
         )
@@ -6373,7 +6377,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "H4") (unit 1)
         )
@@ -6398,7 +6402,7 @@
     )
     (pin "1" (uuid 1a97138d-6405-4da1-bf2f-8a760a62aad0))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR025") (unit 1)
         )
@@ -6423,7 +6427,7 @@
     )
     (pin "1" (uuid b84c5aff-57dc-4366-882d-afde1852ee94))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR032") (unit 1)
         )
@@ -6448,7 +6452,7 @@
     )
     (pin "1" (uuid 5caa67ff-a8fb-4199-873a-126b21890b69))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR056") (unit 1)
         )
@@ -6473,7 +6477,7 @@
     )
     (pin "1" (uuid 0ad29e08-eb58-42e1-8e2b-c109aefa3eb5))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR040") (unit 1)
         )
@@ -6505,7 +6509,7 @@
     (pin "1" (uuid 7901939a-02a3-4899-9ab2-d119eee9bd5b))
     (pin "2" (uuid a990f1e0-475f-4fa5-95b6-027718af71d0))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R31") (unit 1)
         )
@@ -6530,7 +6534,7 @@
     )
     (pin "1" (uuid b94d03a8-b4db-40e8-8b7e-dc6b22f781d3))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR052") (unit 1)
         )
@@ -6555,7 +6559,7 @@
     )
     (pin "1" (uuid f2a7abe6-c3c8-4709-8e82-3d8284daf729))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR021") (unit 1)
         )
@@ -6586,7 +6590,7 @@
     )
     (pin "1" (uuid e2072a76-9092-4327-91a4-3c9f2cdb4a49))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "TP3") (unit 1)
         )
@@ -6611,9 +6615,40 @@
     )
     (pin "1" (uuid 88890098-3f19-46a8-995a-b880dec72072))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR043") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Connector:TestPoint") (at 229.87 25.4 180) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid afd0891a-ce1d-4a5e-99e7-d22fae9c3573)
+    (property "Reference" "TP7" (at 231.267 28.702 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Value" "TestPoint" (at 231.267 29.9141 0)
+      (effects (font (size 1.27 1.27)) (justify right) hide)
+    )
+    (property "Footprint" "TestPoint:TestPoint_Keystone_5010-5014_Multipurpose" (at 224.79 25.4 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 224.79 25.4 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Link" "https://www.digikey.com/en/products/detail/keystone-electronics/5011/255333" (at 229.87 25.4 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "36-5011-ND" (at 229.87 25.4 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 1affba04-6473-41d9-b285-0e3b4e26807e))
+    (instances
+      (project "brain_v2.0"
+        (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
+          (reference "TP7") (unit 1)
         )
       )
     )
@@ -6643,7 +6678,7 @@
     (pin "1" (uuid 336fdf9c-1cc0-46f7-89aa-0d67d2dbf758))
     (pin "2" (uuid 50c5a919-54aa-454e-9a58-210fe080cb78))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J1") (unit 1)
         )
@@ -6677,7 +6712,7 @@
     (pin "3" (uuid cb1406cc-83ab-4ec6-bca0-79e36ee544e4))
     (pin "4" (uuid b6a88092-f6c7-4bad-ba84-f95cf43e5b63))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J16") (unit 1)
         )
@@ -6702,7 +6737,7 @@
     )
     (pin "1" (uuid aef38b85-9f4a-449d-bdaa-abe2943e29a7))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR06") (unit 1)
         )
@@ -6732,7 +6767,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "H2") (unit 1)
         )
@@ -6757,7 +6792,7 @@
     )
     (pin "1" (uuid d2073105-16ed-48a8-90bc-b02b624d4b3c))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR07") (unit 1)
         )
@@ -6789,7 +6824,7 @@
     (pin "1" (uuid 439ca81f-bd7b-47fa-88f2-4c18aa8762ea))
     (pin "2" (uuid 61e22213-566f-48d4-b2e8-03c156915194))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R16") (unit 1)
         )
@@ -6814,7 +6849,7 @@
     )
     (pin "1" (uuid 80eaefb9-3f96-418a-824a-09e308d2c3be))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR028") (unit 1)
         )
@@ -6891,7 +6926,7 @@
     (pin "46" (uuid f538499b-e5aa-4335-b002-434d161a0f8b))
     (pin "47" (uuid 1c353cf0-bc1f-4683-b40f-18f2d7eaf8b8))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "U1") (unit 1)
         )
@@ -6922,7 +6957,7 @@
     )
     (pin "1" (uuid 42d65a6d-c2f2-46ac-9ea6-fba278270ee2))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "TP2") (unit 1)
         )
@@ -6954,7 +6989,7 @@
     (pin "1" (uuid a042ead8-37c5-4be6-97b0-911f45bd569c))
     (pin "2" (uuid 1fba9e65-38e1-4889-96da-ddbf1cb578aa))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R21") (unit 1)
         )
@@ -6987,7 +7022,7 @@
     (pin "2" (uuid 21044f9b-9612-4155-b441-a2e0f7d476c6))
     (pin "3" (uuid 7c67fb21-1ad8-4efc-90f9-9e29c0c6c01e))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J7") (unit 1)
         )
@@ -7019,7 +7054,7 @@
     (pin "1" (uuid daed5329-431d-442f-a846-695fe6cab48e))
     (pin "2" (uuid 491ec601-a25e-4168-9d69-5746d82f14ab))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R15") (unit 1)
         )
@@ -7044,7 +7079,7 @@
     )
     (pin "1" (uuid c0824aef-6302-400d-b35b-853bd389a86c))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR010") (unit 1)
         )
@@ -7069,7 +7104,7 @@
     )
     (pin "1" (uuid 879c8ca3-5e6c-4ce4-9431-e3e6ebae674c))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR057") (unit 1)
         )
@@ -7123,7 +7158,7 @@
     (pin "2" (uuid f24c66a2-af5f-423d-9713-28dcef2a8c7e))
     (pin "3" (uuid 62067be6-920c-436a-96ae-d55ecf8cfeb2))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "Q4") (unit 1)
         )
@@ -7148,7 +7183,7 @@
     )
     (pin "1" (uuid 00783578-e890-412d-998d-bda82cdde796))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR047") (unit 1)
         )
@@ -7181,7 +7216,7 @@
     (pin "2" (uuid 752642d3-de1f-4931-ba75-445da441767e))
     (pin "3" (uuid deffcb30-9c86-41f2-a139-17760baa5e81))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "Q6") (unit 1)
         )
@@ -7206,7 +7241,7 @@
     )
     (pin "1" (uuid fb4eb1cb-a0d7-48cc-bdb2-f93aac1ee46e))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR054") (unit 1)
         )
@@ -7238,7 +7273,7 @@
     (pin "1" (uuid 5bd32b37-8986-41a2-ab5d-65ddabfc1f75))
     (pin "2" (uuid fbb5fbd7-f1c9-49c7-bf34-3ab76ea96d0c))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J2") (unit 1)
         )
@@ -7270,7 +7305,7 @@
     (pin "1" (uuid a5b6fb5a-3f25-4a74-9554-a6088f68b846))
     (pin "2" (uuid a8c7493d-c03d-4a8e-a337-7f3d0f8e0447))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "J12") (unit 1)
         )
@@ -7302,7 +7337,7 @@
     (pin "1" (uuid 1c4bec0d-5862-4bfc-88f8-13a5b964853d))
     (pin "2" (uuid a08a5ab2-da7d-4663-ac3d-114bfe40394b))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "C8") (unit 1)
         )
@@ -7334,7 +7369,7 @@
     (pin "1" (uuid 0a4f9fe4-520e-4a10-ac36-277825cd7e46))
     (pin "2" (uuid 61564bd0-96c8-4e36-a90e-144328d8f6e0))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R18") (unit 1)
         )
@@ -7366,7 +7401,7 @@
     (pin "1" (uuid 2805681a-dfb3-4c06-975d-45fe012711e5))
     (pin "2" (uuid d9f5fb8e-cf69-4cfe-ba54-7359fcdaec22))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R29") (unit 1)
         )
@@ -7398,7 +7433,7 @@
     (pin "1" (uuid f415abf6-f3af-41d0-a7ab-2f865029bcdb))
     (pin "2" (uuid 77959d87-bc25-4ce1-9099-5608e729c953))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R20") (unit 1)
         )
@@ -7423,7 +7458,7 @@
     )
     (pin "1" (uuid 10636bf3-9b9d-4e4c-b084-c95bb9e007d7))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR041") (unit 1)
         )
@@ -7448,7 +7483,7 @@
     )
     (pin "1" (uuid ab3340bf-5391-4b4d-b40c-885912b22100))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR033") (unit 1)
         )
@@ -7480,7 +7515,7 @@
     (pin "1" (uuid 6319d8e8-fe44-482a-850a-7ae582e35262))
     (pin "2" (uuid e0f2ee06-e437-40f1-835f-e8d61cafc51e))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R13") (unit 1)
         )
@@ -7512,7 +7547,7 @@
     (pin "1" (uuid 1012e2a3-5c5d-472f-bf0d-d9b1248ad68e))
     (pin "2" (uuid e948895a-405b-4694-8a7a-3b7153a591f4))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R4") (unit 1)
         )
@@ -7537,7 +7572,7 @@
     )
     (pin "1" (uuid f3c09c3c-3fdc-4f4c-b98d-7d625fa9f0d7))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR046") (unit 1)
         )
@@ -7562,7 +7597,7 @@
     )
     (pin "1" (uuid 1294a254-58b3-4b6b-887a-500d37a6ffe6))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#FLG04") (unit 1)
         )
@@ -7594,7 +7629,7 @@
     (pin "1" (uuid 8fb64b85-ca0b-4c32-8e2e-ffc6ca51f8a6))
     (pin "2" (uuid 6471b241-73a2-4795-b19f-f7b63824f211))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "SW2") (unit 1)
         )
@@ -7626,7 +7661,7 @@
     (pin "1" (uuid 67db630f-4a15-4528-a5ba-0fe2efa97590))
     (pin "2" (uuid 2d768566-00e8-454b-8479-8d72ffee41ab))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R1") (unit 1)
         )
@@ -7658,7 +7693,7 @@
     (pin "1" (uuid c5f119a6-e4c1-4fb6-b006-ca3f716f5543))
     (pin "2" (uuid 9abd7216-5816-401e-8b41-53a2ae2738d7))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R22") (unit 1)
         )
@@ -7683,7 +7718,7 @@
     )
     (pin "1" (uuid e20a1238-8d09-437e-9a34-e0d000f691a5))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR011") (unit 1)
         )
@@ -7715,7 +7750,7 @@
     (pin "1" (uuid 7983afb3-e380-4aae-bc44-921bf97fdb39))
     (pin "2" (uuid 3a1b36d3-1734-4b92-923e-ba0363eec128))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "C3") (unit 1)
         )
@@ -7747,7 +7782,7 @@
     (pin "1" (uuid 28357fa7-e92a-47e0-829f-9d940cdde0fe))
     (pin "2" (uuid 57cc0c9f-beb4-4fef-8034-9f61d893e7be))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "C2") (unit 1)
         )
@@ -7772,7 +7807,7 @@
     )
     (pin "1" (uuid 9a48cc24-a47c-4f73-8007-8596f1b486b0))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR055") (unit 1)
         )
@@ -7804,7 +7839,7 @@
     (pin "1" (uuid 97e305de-eab8-4961-b186-b03c496907d0))
     (pin "2" (uuid 6bdbfc15-6800-48ab-b3c5-c131ad44685b))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R3") (unit 1)
         )
@@ -7829,7 +7864,7 @@
     )
     (pin "1" (uuid 975ff980-dad8-4ea7-9869-9de70c5ea743))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR036") (unit 1)
         )
@@ -7854,7 +7889,7 @@
     )
     (pin "1" (uuid 4cad498b-f88a-4237-8001-18eec6dce439))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "#PWR018") (unit 1)
         )
@@ -7886,7 +7921,7 @@
     (pin "1" (uuid 8dc955a3-1ec6-4230-b391-3fe64de3df72))
     (pin "2" (uuid 9bf9996d-a5d6-4881-b021-81f74c42a338))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R17") (unit 1)
         )
@@ -7918,7 +7953,7 @@
     (pin "1" (uuid c61886bc-003e-4f59-94da-d4185966de53))
     (pin "2" (uuid 98074806-47ee-43cf-af39-00a38cdf94aa))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "R26") (unit 1)
         )
@@ -7951,7 +7986,7 @@
     (pin "2" (uuid 3c86e9e2-d455-47c0-b312-0d50ed383d3f))
     (pin "3" (uuid 3d7caef3-69b1-430c-abb8-220d324d24f6))
     (instances
-      (project "brain_v1.0"
+      (project "brain_v2.0"
         (path "/1e1b062d-fad0-427c-a622-c5b8a80b5268"
           (reference "Q5") (unit 1)
         )
