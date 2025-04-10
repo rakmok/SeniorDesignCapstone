@@ -26,6 +26,21 @@ def fetchUser(username):
     cursor.close()
     conn.close()
     return True
+
+def getPetbyRFID(rfid):
+    conn = connect()
+    cursor = conn.cursor()
+    
+    query = 'select petID from pets where RFID = %s'
+    cursor.execute(query, (rfid,))
+
+    petID = cursor.fetchone()
+    print(f'cursor.fetchone() returns {petID}')
+
+    cursor.close()
+    conn.close()
+
+    return petID
     
 
 # Validate user login (to see if account creation worked)
@@ -129,6 +144,20 @@ def getFeedingTime(username,petname, feeding_time):
     cursor.close()
     conn.close()
     return True
+
+def getFeedingTimebyPetID(petID):
+    conn = connect()
+    cursor = conn.cursor()
+
+    query = "select * from feeding_times where petID = %s"
+    cursor.execute(query, (petID,))
+
+    feeding_times = cursor.fetchall()
+    print(f'the feeding times are {feeding_times}')
+
+    cursor.close()
+    conn.close()
+    return feeding_times
 
 
 # get the single pet for verification to make sure the pet was created correctly

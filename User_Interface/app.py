@@ -1,6 +1,10 @@
-from bottle import Bottle, run, template, request, redirect, HTTPError
+from bottle import Bottle, run, template, request, redirect, HTTPError,static_file, route, response
 from beaker.middleware import SessionMiddleware
 import database
+import json
+from datetime import datetime, timedelta
+# from wsgiref.simple_server import make_server
+# import sys
 
 # Create Bottle app
 app = Bottle()  
@@ -14,10 +18,30 @@ session_opts = {
 # will remember past sessions (i.e. will remember the user as you move pages)
 wrapped_app = SessionMiddleware(app, session_opts)  
 
+
 # this will display the login page
 @app.route('/')
-def login():
-    return template('views/login.html')
+def index():
+    print("in the '/' route")
+    # return "hello"
+    try:
+        print('in the try catch for "/"')
+        return template('views/login.html')
+    except Exception as e:
+        print(f"Error rendering template: {e}")
+        raise e
+    # return template('views/login.html')
+
+@app.route('/test')
+def test():
+    return "Test route works!"
+
+
+#this allows static files to be accessed (ex. images)
+@app.route('/static/<filepath:path>')
+def server_static(filepath):
+    return static_file(filepath, root='./static')
+
     
 # this POST request will create a new user if the Create New Account button is clicked
 @app.route("/create", method='POST')
@@ -153,6 +177,83 @@ def dashboard():
 #     return "Data received"
 
 
+# this will handle all data processing from the PCB
+@app.route('/receive', method=['GET','POST'])
+def receive_data():
+    # print("here")
+    # print("== /receive called ==")
+    # print("Method:", request.method)
+    # print("Headers received:", dict(request.headers))
+    # print("Raw body:", request.body.read())
+    request.body.seek(0)
+
+    data = request.json
+    print("Parsed JSON:", data)
+
+    # if request.method == 'GET':
+    #     return "GET is working"
+    # if not data:
+    #     return {'status': 'error', 'message': 'Invalid or missing JSON'}
+
+    # print("Headers received:", dict(request.headers))
+    # print("Raw body:", request.body.read())
+    # print("ESP32 Sent:", data)
+
+    if 'tag' in data:
+        tag = int(data['tag'],16)
+        print(f'printing the type of the tag {type(tag)}')
+        print(f'printing the int of the tag UIN {tag}')
+
+        petID = database.getPetbyRFID(tag)
+        print(f'the petid returned is {petID}')
+
+        feeding_times = database.getFeedingTimebyPetID(petID)
+        print(f"the feeding times type is {type(feeding_times)}")
+        print(f"the first feeding times is {feeding_times[0][2]}")
+        now = datetime.now().time()
+        current_time = timedelta(hours=now.hour, minutes=now.minute, seconds=now.second)
+
+        print(f'the current time is {current_time}')
+        print(f"the feeding times are {feeding_times}")
+
+        dispense_food = False
+        for feeding_time in feeding_times:
+            print(f"the feeding times are {feeding_time[2]}")
+
+            if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=30)):
+                print(f'dispense food')
+                dispense_food = True
+                break
+            else:
+                print(f'need to wait')
+
+
+        # try:
+        #     tag = int(data['tag'],16)
+        #     print(f'printing the type of the tag {type(tag)}')
+        #     print(f'printing the int of the tag UIN {tag}')
+
+        #     petID = database.getPetbyRFID(tag)
+
+        #     feeding_time = database.getFeedingTimebyPetID(petID)
+        #     print(f"the feeding times type is {type(feeding_time)}")
+        #     print(f"the feeding times are {feeding_time}")
+
+        # except ValueError:
+        #     return {'status': 'error', 'message': 'Invalid tag format'}
+        
+    # return {'status': 'received'}
+    
+    return {'status': 'received', "dispense_food": f"{dispense_food}"}
+
+@app.route('/command', method='GET')
+def send_command():
+    command = {"action": "turn_on_led", "value": 1}
+    response.content_type = 'application/json'
+    return json.dumps(command)
+
+
+
 # this will redirect the user to the history page to see thier pet history and display the history template
 @app.route('/history')
 def history():
@@ -173,7 +274,29 @@ def logout():
     session.delete()
     redirect('/')
 
+# print("Routes defined:")
+# for r in app.routes:
+#     print(r.rule)
+
 
 # if this file is run, this will call the app and run it on port 8080
 if __name__ == "__main__":
-    run(app=wrapped_app, host='localhost', port=8080, debug=True, reloader=True)  
+    # print(f"__name__ is {__name__}")
+    print("here")
+    # print("Routes defined:")
+    # for r in app.routes:
+    #     print(r.rule)
+
+    # try:
+    #     # server = make_server('localhost', 8080, wrapped_app)
+    #     # print("Running on http://localhost:8080/")
+        
+    #     # server.serve_forever()
+    #     run(app=wrapped_app, host='localhost', port=8080, debug=True, reloader=True)
+    #     # run(app=wrapped_app, host='localhost', port=8080, debug=True, reloader=True)  
+
+    # except KeyboardInterrupt:
+    #     print("\nServer shut down gracefully.")
+    #     sys.exit(0)
+
+    run(app=wrapped_app, host='0.0.0.0', port=8080, debug=True, reloader=True)  
