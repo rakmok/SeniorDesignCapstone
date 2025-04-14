@@ -211,21 +211,27 @@ def receive_data():
         print(f"the feeding times type is {type(feeding_times)}")
         print(f"the first feeding times is {feeding_times[0][2]}")
         now = datetime.now().time()
+        now2 = datetime.now()
         current_time = timedelta(hours=now.hour, minutes=now.minute, seconds=now.second)
 
         print(f'the current time is {current_time}')
         print(f"the feeding times are {feeding_times}")
 
         dispense_food = False
+
+        petname = database.getPetName(petID[0])[0]
+        print(f'the petname is {petname}')
         for feeding_time in feeding_times:
             print(f"the feeding times are {feeding_time[2]}")
 
             if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=30)):
                 print(f'dispense food')
                 dispense_food = True
+                database.createHistoryEntry(petID, f'{petname} requested food and food was dispensed', now2)
                 break
             else:
                 print(f'need to wait')
+                database.createHistoryEntry(petID, f'{petname} requested food', now2)
 
 
         # try:

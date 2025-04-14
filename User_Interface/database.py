@@ -101,6 +101,20 @@ def getPetID(username,petname):
 
     return petID
 
+def getPetName(petID):
+    conn = connect()
+    cursor = conn.cursor()
+
+    query = 'select petName from pets where petID = %s'
+    cursor.execute(query, (petID,))
+
+    petName = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    return petName
+
 # Create new pet for a user
 def createPet(username, petname, rfid, petdescription, petfood):
     conn = connect()
@@ -239,7 +253,7 @@ def getFeedingHistory(petID):
     conn = connect()
     cursor = conn.cursor()
 
-    query = "select * from history where petID = %s limit 15"
+    query = "select * from history where petID = %s limit 15 sort desc"
     cursor.execute(query, (petID,))
 
     history = cursor.fetchall()
@@ -267,14 +281,12 @@ def getHistory(username):
     return history
 
 # this will create a history entry and add it to the database
-def createHistoryEntry(username, petname, data, time):
+def createHistoryEntry(petID, update, time):
     conn = connect()
     cursor = conn.cursor()
     
-    petID = getPetID(username, petname)
-    
     query = 'insert into history (petID, status_update, event_time) values (%s,%s,%s)'
-    cursor.execute(query, (petID, data, time))
+    cursor.execute(query, (petID, update, time))
 
     conn.commit()
     cursor.close()
