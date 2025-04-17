@@ -103,14 +103,104 @@ A detailed description of our database schema can be found at [here](./database_
 
 This is a screenshot of the current version of the code.
 ![User Interface](./images/UI_website.png)
+![Dashboard](./images/Dashboard.png)
+
 
 ## Meeting #15
+Date:         _3/9/2025_   
+Objectives:   The goal of this meeting was to start preparing for the breadboard demo.   
+Record:       During this meeting, we assembled our parts that we had and started unit testing the RFID, Load Cell, and Presence Sensor Code on our breadboard.
+
+
+## Meeting #16
 Date:         _3/11/2025_   
 Objectives:   The goal of this meeting was to finish preparing for the breadboard demo.   
-Record:       During this meeting, we tested the RFID, Load Cell, and Presence Sensor Code on the Arduino for the breadboard demo. We have successfully gotten the code to work and combined them into one file.  
+Record:       During this meeting, we continued testing the RFID, Load Cell, and Presence Sensor Code on our breadboard. Once we got it working individually, we started working on integrating the code. We got it working for the demo.  
 
-A detailed description of our Software code for the Arduino Breadboard Demo can be found on the main branch under SoftwareFiles.
 
-This is a screenshot of the current Dashboard and History page of the user interface.
-![Dashboard](./images/Dashboard.png) 
-![History](./images/History.png)
+## Meeting #17
+Date:         _3/12/2025_   
+Objectives:   Breadboard demo!!   
+Record:       During this meeting, demoed our breadboard code. We also got approved to use the RFID devboard for the final demo due to our demonstrated complexity of the project and PCB.  
+
+We also ordered an ESP32 Dev Kit to start testing our code before our boards come in.  
+
+
+## [No Meeting]
+Date:         _3/15/2025 - 3/23/2025_   
+Objectives:   Spring Break!!      
+Record:       There was no meeting for this week for Spring Break.  
+
+## Meeting #18
+Date:         _3/24/2025_   
+Objectives:   During this meeting, I started transferring our code from the breadboard demo to be compatible with the ESP32 chip.  
+Record:       Before break, we ordered an ESP32 devkit to test our programming on, before transitioning to the PCB to identify if any potential errors were with our code or the PCB. The devkit had arrived, so I started testing and integrating code from the breadboard demo (with an Arduino UNO) to the ESP32 devkit. RFID, the load cells, and presence sensors were all able to work on the ESP32.
+
+## Meeting #19
+Date:         _3/25/2025_   
+Objectives:   During this meeting, I worked on testing WiFi on the ESP32 DevKit.    
+Record:       I started testing WiFi code on the ESP32 DevKit. Since the Arduino UNO does not support WiFi, we were not able to test this previously. I was able to get WiFi to work correctly on the ESP32 DevKit. 
+
+
+## Meeting #20
+Date:         _3/27/2025_   
+Objectives:   The goal of this meeting was to start soldering what we could to our PCBs that had arrived.     
+Record:       During this meeting, we got our Power Board and Brain Board, along with most of the parts we ordered previously. We started soldering our boards.
+
+## Meeting #21
+Date:         _3/31/2025_   
+Objectives:   Keep soldering the PCBs.  
+Record:       During this meeting, we kept soldering our boards with the parts we had.  
+
+## Meeting #22
+Date:         _4/1/2025_   
+Objectives:   Finish soldering Brain Board PCB.  
+Record:       During this meeting, we finished soldering our Brain board. We are ready to start debugging and programming for the next meeting.  
+
+## Meeting #23
+Date:         _4/4/2025_   
+Objectives:   The goal of this meeting was to start assembling and testing the Brain board for the mock demo.   
+Record:       During this meeting, we were working on debugging the Brain board. We completed soldering, but we were not able to properly program the ESP32. We were not able to get it working this day.   
+
+## Meeting #24
+Date:         _4/5/2025_   
+Objectives:   The goal of this meeting was to start assembling and testing the Brain board for the mock demo.   
+Record:       During this meeting, we were working on debugging the Brain Board in order to be able to program the MCU. We were able to get the Brain Board to correctly program. We ended up having to solder a resistor to DTR in order to program the board, but we were able to program the board.
+
+
+## Meeting #25
+Date:         _4/7/2025_   
+Objectives:   The goal of this meeting was to start preparing for the mock demo.   
+Record:       During this meeting I was working on setting up WiFi on the ESP32 and sending messages between the ESP32 and the locally hosted web server. I was locally hosting a webserver on my computer and wanted to connect the ESP32 such that communication could occur between the servers.
+
+## Meeting #26
+Date:         _4/8/2025_   
+Objectives:   The goal of this meeting was to start preparing for the mock demo.   
+Record:       During this meeting I was working on sending signals between the ESP32 and the locally hosted web server. I was locally hosting a webserver on my computer and wanted to connect the ESP32 such that communication could occur between the servers. I started testing on sending HTTP packets to the web server and vice versa.
+
+## Meeting #27
+Date:         _4/10/2025_   
+Objectives:   The goal of this meeting was to start preparing for the mock demo.   
+Record:       During this meeting I was working on handling the routing between the ESP32 and the locally hosted web server. I made the routing work such that if an RFID tag is scanned, the UIN stored in the tag is sent to the web server. Once the web server receives the tag, it fetches the pet the RFID belongs to and the corresponding feed times. If it is a feeding time, the server returns the message {"dispense food": "True"}
+
+
+## Meeting #28
+Date:         _4/14/2025_   
+Objectives:   The goal of this meeting was to prepare for the mock demo.   
+Record:       During this meeting, I integrated the current RFID/WiFi code with the Presence Sensor code. I was able to get the presence sensors to read values, show if they were broken or not, and send the updates to the web server. The update is then entered into the history table and displayed on the User Interface's History page.
+
+
+## Meeting #29
+Date:         _4/15/2025_   
+Objectives:   The goal of this meeting was to prepare for the mock demo.   
+Record:       During this meeting, I integrated the current RFID/WiFi/Presence Sensor code with the Load Cell code. I was able to get the load cell to read values of both load cells, but not distinguish between which was which. I did not finish. Arash will work on this starting 4/16.
+
+
+## Meeting #30
+Date:         _4/16/2025_   
+Objectives:   The goal of this meeting was to prepare for the Mock demo on Monday, April 21st during the TA Meeting.   
+Record:       During this meeting, I updated our User Interface to include a Project Description page. I also updated my lab notebook with all recent updates. I also helped Arash with the load cell code.  
+
+I have included an image of the Project Description page below.
+
+![Project Description Page](./images/Project_Description_page.png) 
