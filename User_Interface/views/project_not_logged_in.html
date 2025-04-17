@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawFeast: Food on Demand</title>
+    <style>
+        h1 {    text-align: center;        }
+        body {  text-align: center;
+                background-color: #aaccb3; }
+        input { background-color: #d2ecd9; }
+        img {   font-family: 'Times New Roman', Times, serif;
+                font-size: 16px;
+                color: rgb(1, 5, 7);
+                width: 50%;
+                height: 50%;               }
+        p {
+            /* width: 80%; */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href='/to_login' >Back to Login Screen</a><br>
+
+    <h1>Welcome to the PawFeast: Food on Demand User Interface! [NOT LOGGED IN]</h1>
+    <p>This is the server used as the user interface for the University of Illinois Urbana-Champaign ECE445 Group 30 Team Project.</p>
+
+    <h2>Team Members</h2>
+    <p>
+        Omkar Kulkarni (onk2) <br>
+        Arash Amiri (arasha3) <br>
+        Kathryn Thompson (kyt3) <br>
+    </p>
+    
+    <h2>Problem</h2>
+    <p>All household pet owners must remember to feed their pets—whether they are birds, guinea pigs, rabbits, dogs, or cats—at set periods during the day. But there can be times when people forget to feed their pets, double feed them, or have trouble feeding them on schedule. This can be due to poor communication between family members or even occur when pet owners come home late from work or prior commitments. During these times, pets either overeat, go hungry, or eat irregularly. As a result, timer-based pet feeders have been developed to release food at set intervals. When food sits out for extended periods of time, the risk of the food becoming stale or getting infected with bugs increases drastically [4.1]. <br>
+        <br>
+        If an insect is near your food, it is a common reaction to remove or swat it away, but that mechanism is not present for the pet’s food bowl, especially when the family is not at home. Another issue is that smarter pets can nose into the food storage and overeat or eat something that their bodies will reject (like chocolate for dogs). With a set schedule to limit food dispensation throughout the day, the pet will not take advantage of either a careless overpour of food or of an unmanned food station. Furthermore, data on how much food was dispensed and eaten will help track and optimize the pet’s eating habits. 
+    </p>
+    <h2>Solution</h2>
+    <p>
+        We are seeking to solve this problem by having timers coupled with a button and RFID component to release food—thus preventing overeating. Given all of these conditions, the dispenser will release the pet food. This ensures that the pet is not only fed on time, but that the food is not polluted when the pet goes to eat; additionally, a chime will go off signaling to the pet that it is time for them to eat [4.2]. We will incorporate a notification system to alert the owner(s) whether the pet has eaten or when the food store has low levels of food.<br>
+        <br>
+        If the pet were to not eat all the food at once and leave the food dispenser, the pressure sensor will tell the dispenser to cover the food until the pet returns ensuring freshness and preventing bugs. 
+    </p>
+   
+    <img src="/static/images/physical_design.png" alt="Physical Design"></img>
+
+    <h2>Solution Components</h2>
+    <h3>Subsystem 1: Refilling Food Store</h3> 
+    <p>
+        The subsystem for checking if the food store is empty will include an infrared presence sensor (Vishay TSSP77038) that is able to measure up to 2 meters in front of it to determine whether an object is present—this will serve to detect whether the food inside of the container is low and needs to be refilled. When the food store reaches a certain level, a signal will be sent to subsystem 7 (the brain), which will send an automated message to notify the owner to refill the food store.
+    </p>
+
+    <h3>Subsystem 2: Power System</h3> 
+    <p>
+        The power system will supply energy to all of the various subsystems, including the microcontroller of subsystem 7, the stepper motor driver in subsystem 3, and the various sensors in subsystems 1, 5, and 6. The low voltage buses will be 3.3V, 12V, and 5V, all of which will be powered by a combination of rechargeable lithium-ion batteries and low-dropout regulators. This compact, custom battery pack will allow the pet dispenser to be portable, even for family vacations or road trips. The AMS1117 LDO has variable voltage levels of 1.2V, 1.5V, 3.3V, 5V, and more for all of the lower voltage needs; the 12V supply will come directly from the battery pack or possibly from a DC-DC converter that is implemented.
+    </p>
+
+
+    <h3>Subsystem 3: Food Dispenser</h3> 
+    <p>
+        This subsystem will utilize a E Series Nema 17 stepper motor that will slide open a door to the food container when needed and allow a set amount of food through before sliding closed the
+        door. The motor will be controlled by a stepper motor controller IC (DRV8825) with a custom control circuit that takes in 12V and outputs 3.4V to the motor. Hard cut offs will also be coded for maximum food and min and max on times during the day.<br><br>
+        
+        The main objective of this subsystem is to make the system an on-demand food system. We will utilize a large button for the dog to step on when hungry. When pressed, the system will start the motors to release food, on the condition that enough time has elapsed since it ate last. The pet would be trained how to ask for food using this button. Only when the button is pressed and enough time has passed, will food then be dispensed.
+    </p>
+
+    <h3>Subsystem 4: RFID for pet identification</h3> 
+    <p>
+        We will have receivers for minimum 2 RFIDs, UHF RFID tag 9662 Long Distance Passive Alien H3. The RFIDs would be used to signal which pet is using the dispenser, so the owner is able to utilize the same dispenser for one or more pets.
+    </p>
+
+    <h3>Subsystem 5: User Interface</h3> 
+    <p>
+        The subsystem for notifications will be a phone application that we will build that is able to connect with the pet feed dispenser system. For the application side, we will utilize React Native and Expo to create a user friendly method to check the pet’s eating habits. This will notify users for when the pet has been fed, if the food tank is low and requires refiling, and if the food was covered due to an empty bowl or a partially filled one.
+    </p>
+
+    <h3>Subsystem 6: Brain</h3> 
+    <p>
+        The brain subsystem will take in inputs from all of the other sensor subsystems and output the according signals to the user interface (for notifications) and the food dispenser motor driver. This system will also track the amount of time that has passed and sound a soft chime for when enough time has passed for the pet to be able to eat. The ESP32 microcontroller, known for its wifi connectivity and security measures, would have a set of I/O pins for taking in these signals. This MCU programmer circuit and other control level circuitry—firmware or equivalent—would be incorporated onto this board along with a UART circuit to detect pet RFIDs (done with the UHF RFID reader JRD-4035).
+    </p>
+
+    <h2>Criterion For Success</h2>
+    <p>
+        The mechanical feeder system should drop a bowl-full of food once a valid RFID is nearby, a pet-intended button has been pressed, AND enough time has passed since the pet last ate. <br>
+        An owner should receive a notification once the food store has decreased below 10% and 20%, and when criterion 1 has been satisfied.<br>
+        The power system should be power efficient: the rechargeable battery should last for at least 10 food dispenses.<br>
+    </p>
+</body>
+</html>
