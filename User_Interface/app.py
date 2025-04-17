@@ -22,10 +22,7 @@ wrapped_app = SessionMiddleware(app, session_opts)
 # this will display the login page
 @app.route('/')
 def index():
-    print("in the '/' route")
-    # return "hello"
     try:
-        print('in the try catch for "/"')
         return template('views/login.html')
     except Exception as e:
         print(f"Error rendering template: {e}")
@@ -64,6 +61,8 @@ def do_login(create=False):
         if len(password) < 4:
             raise HTTPError(400, "Password too short")
         database.createUser(username, password)
+        # userID = database.getUserID(username)
+        # database.createPet(username, "Petfood Dispensor", userID, "Entry created to story petfood dispensor events", "None")
 
     if not database.validateUser(username, password):
         raise HTTPError(403, "Login unsuccessful")
@@ -199,30 +198,49 @@ def receive_data():
     # print("Raw body:", request.body.read())
     # print("ESP32 Sent:", data)
 
+    #if a presence sensor is triggered, handle the event and push to the history table
+    
+    # print(f'pushing the sensor data to the history table')
+    if 'sensor' in data and 'value' in data and 'id' in data:
+        presence_sensor = data['sensor']
+        value = data['value']
+        id_value = data['id']
+
+        petID = database.getPetbyRFID(id_value)
+
+        if presence_sensor == "a" and value == 0:
+            database.createHistoryEntry(petID, f'Low food store. Capacity is at 50%.', datetime.now())
+        if presence_sensor == "b" and value == 0:
+            database.createHistoryEntry(petID, f'Low food store. Capacity is at 20%.', datetime.now())
+    #         print(f'the sensor triggered is {presence_sensor} and its value is {value}')
+    #         userID = 
+    #         database.createHistoryEntry()
+
+    #if RFID is scanned/button pressed, get the feeding times and return if it is a feeding time
     if 'tag' in data:
         tag = int(data['tag'],16)
-        print(f'printing the type of the tag {type(tag)}')
+        # print(f'printing the type of the tag {type(tag)}')
         print(f'printing the int of the tag UIN {tag}')
 
         petID = database.getPetbyRFID(tag)
-        print(f'the petid returned is {petID}')
+        # print(f'the petid returned is {petID}')
 
         feeding_times = database.getFeedingTimebyPetID(petID)
-        print(f"the feeding times type is {type(feeding_times)}")
-        print(f"the first feeding times is {feeding_times[0][2]}")
+        # print(f"the feeding times type is {type(feeding_times)}")
+        # print(f"the first feeding times is {feeding_times[0][2]}")
         now = datetime.now().time()
         now2 = datetime.now()
         current_time = timedelta(hours=now.hour, minutes=now.minute, seconds=now.second)
 
-        print(f'the current time is {current_time}')
-        print(f"the feeding times are {feeding_times}")
+        # print(f'the current time is {current_time}')
+        # print(f"the feeding times are {feeding_times}")
 
         dispense_food = False
 
         petname = database.getPetName(petID[0])[0]
-        print(f'the petname is {petname}')
+        # print(f'the petname is {petname}')
         for feeding_time in feeding_times:
-            print(f"the feeding times are {feeding_time[2]}")
+            # print(f"the feeding times are {feeding_time[2]}")
 
             if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=30)):
                 print(f'dispense food')
@@ -231,7 +249,11 @@ def receive_data():
                 break
             else:
                 print(f'need to wait')
-                database.createHistoryEntry(petID, f'{petname} requested food', now2)
+        
+        if dispense_food == False:
+            database.createHistoryEntry(petID, f'{petname} requested food', now2)
+
+        return {'status': 'received', "dispense_food": f"{dispense_food}"}
 
 
         # try:
@@ -250,7 +272,7 @@ def receive_data():
         
     # return {'status': 'received'}
     
-    return {'status': 'received', "dispense_food": f"{dispense_food}"}
+    return {'status': 'received'}
 
 @app.route('/command', method='GET')
 def send_command():
@@ -273,6 +295,25 @@ def history():
         redirect('/')
 
 
+# this reroutes the user to the main login page and deletes the current session
+@app.route('/project_page_logged_in')
+def project_page_logged_in():
+    session = request.environ['beaker.session']
+
+    if 'user' in session:
+        return template('views/project.html')
+    else:
+        redirect('/')
+
+# this reroutes the user to the main login page and deletes the current session
+@app.route('/project_not_logged_in')
+def project_not_logged_in():
+    return template('views/project_not_logged_in.html')
+
+@app.route('/to_login')
+def to_login():
+    redirect('/')
+
 # this reroutes the user the the login page and deletes the current session
 @app.route('/logout')
 def logout():
@@ -288,7 +329,7 @@ def logout():
 # if this file is run, this will call the app and run it on port 8080
 if __name__ == "__main__":
     # print(f"__name__ is {__name__}")
-    print("here")
+    # print("here")
     # print("Routes defined:")
     # for r in app.routes:
     #     print(r.rule)

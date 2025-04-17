@@ -43,6 +43,8 @@
 <body>
     <a href='/logout' >Logout</a><br>
     <a href='/dashboard'>User Dashboard</a><br>
+    <a href='/project_page_logged_in' >See Project Details Here</a><br>
+
 
     <h1>Welcome {{username}} to the PawFeast: Food on Demand User Interface!</h1>
 
@@ -53,22 +55,12 @@
     <h2>Pet Event History</h2>
     <div class="history-card">
         You can see your pet's event history here!
-        % for pet in pets:
-        <h3>{{ pet[3] }}:</h3>
+
         <ul>
-            % found_history = False  # Flag to check if pet has history
             % for entry in history:
-                % if entry[0] == pet[0]:  # Match petID
-                    % found_history = True
-                    <li>{{ entry[2] }}  --  Event: {{ entry[1] }} <br></li>
-                % end
-            % end
-    
-            % if not found_history:  # If no event history was found
-                <li>No pet event history</li>
+                <li>{{ entry[2] }}  --  Event: {{ entry[1] }} <br></li>
             % end
         </ul>
-        % end
             
     </div>
 </body>

@@ -35,7 +35,7 @@ def getPetbyRFID(rfid):
     cursor.execute(query, (rfid,))
 
     petID = cursor.fetchone()
-    print(f'cursor.fetchone() returns {petID}')
+    # print(f'cursor.fetchone() returns {petID}')
 
     cursor.close()
     conn.close()
@@ -271,8 +271,10 @@ def getHistory(username):
     userID = getUserID(username)
     query = ''' 
                 select petID, status_update, event_time from history 
-                where petID in (select petID from pets where userID  = %s) limit 15
+                where petID in (select petID from pets where userID  = %s) 
+                order by event_time desc   
             '''
+    # limit 15
     cursor.execute(query, (userID,))
 
     history = cursor.fetchall()
