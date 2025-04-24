@@ -1,4 +1,4 @@
-from bottle import Bottle, run, template, request, redirect, HTTPError,static_file, route, response
+from bottle import Bottle, run, template, request, redirect, HTTPError,static_file, route, response, error
 from beaker.middleware import SessionMiddleware
 import database
 import json
@@ -17,6 +17,7 @@ session_opts = {
 
 # will remember past sessions (i.e. will remember the user as you move pages)
 wrapped_app = SessionMiddleware(app, session_opts)  
+
 
 
 # this will display the login page
@@ -53,19 +54,44 @@ def do_login(create=False):
     password = request.forms.get('password')
 
     if username == None or password == None:
-        raise HTTPError(400, "Required field is empty")
+        # raise HTTPError(400, "Required field is empty")
+        return f'''
+                <script>
+                    alert("Error: One of the required fields is empty.");
+                    window.history.back();
+                </script>
+            '''
+        
     
     if create:
         if database.fetchUser(username):
-            raise HTTPError(400, "User already exists")
+            # raise HTTPError(400, "User already exists")
+            return f'''
+                <script>
+                    alert("Error: User already exists.");
+                    window.history.back();
+                </script>
+            '''
         if len(password) < 4:
-            raise HTTPError(400, "Password too short")
+            # raise HTTPError(400, "Password too short")
+            return f'''
+                <script>
+                    alert("Error: User already exists.");
+                    window.history.back();
+                </script>
+            '''
         database.createUser(username, password)
         # userID = database.getUserID(username)
         # database.createPet(username, "Petfood Dispensor", userID, "Entry created to story petfood dispensor events", "None")
 
     if not database.validateUser(username, password):
-        raise HTTPError(403, "Login unsuccessful")
+        # raise HTTPError(403, "Login unsuccessful")
+        return f'''
+                <script>
+                    alert("Error: Login unsuccessful.");
+                    window.history.back();
+                </script>
+            '''
     
     # set the user as the username of the person logging in
     session['user'] = username
@@ -96,15 +122,35 @@ def createPet():
 
     if petname == '' or rfID == '' or petdescription == '' or petfood =='':
         print("empty field for pet")
-        raise HTTPError(400, "Required field is empty")
+        # raise HTTPError(400, "Required field is empty")
+        return f'''
+                <script>
+                    alert("Error: One of the required fields is empty.");
+                    window.history.back();
+                </script>
+            '''
     
     if 'user' in session:
         username = session['user']
+
+        if database.getPetID(username, petname) is not None:
+            return f'''
+                <script>
+                    alert("Error: A pet with this name already exists.");
+                    window.history.back();
+                </script>
+            '''
         # this operates on the assumption that the user is logged in, and the rfID is correct
         database.createPet(username, petname, rfID, petdescription, petfood)
         userID = database.getUserID(username)
         if not database.getPet(userID, petname):
-            raise HTTPError(403, "Pet creation unsuccessful")
+            return f'''
+                <script>
+                    alert("Error: Pet could not be created.");
+                    window.history.back();
+                </script>
+            '''
+            # raise HTTPError(403, "Pet creation unsuccessful")
         else:
             print("pet was successfully added to the database")
         
@@ -124,15 +170,34 @@ def createFeedingTime():
 
     if  petname == '' or feedingTime == ''  or amount == '':
         print("empty field for feeding time")
-        raise HTTPError(400, "Required field is empty")
-    
+        # raise HTTPError(400, "Required field is empty")
+        return f'''
+                <script>
+                    alert("Error: One of the required fields is empty.");
+                    window.history.back();
+                </script>
+            '''
     if 'user' in session:
         username = session['user']
+
+        if database.getPetID(username, petname) is None:
+            return f'''
+                <script>
+                    alert("Error: An invalid petname was given.");
+                    window.history.back();
+                </script>
+                '''
         # this operates on the assumption that the user is logged in, and the rfID is correct
         database.createFeedingTime(username, petname, feedingTime, amount)
         
         if not database.getFeedingTime(username,petname, feedingTime):
-            raise HTTPError(403, "Creation of Feeding Time was unsuccessful")
+            # raise HTTPError(403, "Creation of Feeding Time was unsuccessful")
+            return f'''
+                <script>
+                    alert("Error: Creation of Feeding Time was unsuccessful.");
+                    window.history.back();
+                </script>
+            '''
         else:
             print("Feeding time was successfully added to the database")
 
@@ -301,7 +366,7 @@ def project_page_logged_in():
     session = request.environ['beaker.session']
 
     if 'user' in session:
-        return template('views/project.html')
+        return template('views/project.html', username=session['user'])
     else:
         redirect('/')
 
@@ -309,6 +374,23 @@ def project_page_logged_in():
 @app.route('/project_not_logged_in')
 def project_not_logged_in():
     return template('views/project_not_logged_in.html')
+
+
+# this reroutes the user to the main login page and deletes the current session
+@app.route('/about_logged_in')
+def about_logged_in():
+    session = request.environ['beaker.session']
+
+    if 'user' in session:
+        return template('views/about.html', username=session['user'])
+    else:
+        redirect('/')
+
+# this reroutes the user to the main login page and deletes the current session
+@app.route('/about_not_logged_in')
+def about_not_logged_in():
+    return template('views/about_not_logged_in.html')
+
 
 @app.route('/to_login')
 def to_login():
@@ -346,4 +428,4 @@ if __name__ == "__main__":
     #     print("\nServer shut down gracefully.")
     #     sys.exit(0)
 
-    run(app=wrapped_app, host='0.0.0.0', port=8080, debug=True, reloader=True)  
+    run(app=wrapped_app, host='0.0.0.0', port=8080, reloader=True)  

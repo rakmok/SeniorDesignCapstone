@@ -204,3 +204,13 @@ Record:       During this meeting, I updated our User Interface to include a Pro
 I have included an image of the Project Description page below.
 
 ![Project Description Page](./images/Project_Description_page.png) 
+
+## Meeting #31
+Date:         _4/18/2025_   
+Objectives:   The goal of this meeting was to get ready for the Mock Demo on Monday, 4/21.
+Record:       During this meeting, I worked on buffing up our User Interface to include a navigation bar and an about page.
+
+## Meeting #32
+Date:         _4/21/2025_   
+Objectives:   The goal of this meeting was to get ready for the Mock Demo and to present to our TA. 
+Record:       During this meeting, we presented our current project to our TA for the Mock Demo and answered any questions that she had for us.

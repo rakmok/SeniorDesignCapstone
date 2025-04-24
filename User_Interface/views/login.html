@@ -7,7 +7,10 @@
     <style>
         h1 {    text-align: center;        }
         body {  text-align: center;
-                background-color: #6a9976; }
+                background-color: #6a9976; 
+                /* margin-left: 50px;
+                margin-right: 50px;
+                margin-top: 30px;} */}
         input { background-color: #d2ecd9; }
         img {   font-family: 'Times New Roman', Times, serif;
                 font-size: 16px;
@@ -18,41 +21,90 @@
             /* width: 80%; */
             text-align: center;
         }
+        .container {  
+            text-align: center;
+            /* background-color: #b8dac0; */
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 30px; 
+
+        }
+        
+        /* https://www.w3schools.com/howto/howto_js_topnav.asp */
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            position: sticky;
+            margin-left: -10px;
+            margin-top: -10px;
+            margin-right: -10px;
+            top: 0;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            background-color: #98c0a1;
+            color: white;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+            background-color: #98c0a1;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to the PawFeast: Food on Demand User Interface!</h1>
-    <p>This is the webpage used as the user interface for the University of Illinois Urbana-Champaign ECE445 Group 30 Team Project.</p>
-
-    <img src="https://www.americanhumane.org/wp-content/uploads/2024/11/shutterstock_162633491-1440x900.jpg" alt="Pet Image">
-
-    <p>Sign in or create an account to get started!</p>
-    <!-- <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L25zODIzMC1pbWFnZS5qcGc.jpg" alt="Pet Image"> -->
-    
-    <form action="/login" method="POST">
-        Username: <input name="username" type="text" placeholder="Username"/><br>
-        Password: <input name="password" type="password" placeholder="Password"/><br>
-        <br>
-        <input value="Login" formaction="./login" type="submit" />
-        <input value="Create New Account" formaction="./create" type="submit" />
-    </form><br>
-    
-    <h2>Inspiration</h2>
-    <p>
-        <a href='/project_not_logged_in' >See Project Details Here</a><br>
-        <br>
-        We are pet enthusiasts and thought of this idea as we have faced the problem of bugs getting into our pet's food or trying to remember if we fed or double fed our pets when taking care of our own pets. We have included images of our pets below.
-    </p>
-    <h3>Lily</h3>
-    <img src="/static/images/lily.png" alt="kathryn's dog lily"></img>
-    <h3>Spock</h3>
-    <img src="/static/images/spock.png" alt="omkar's dog spock"></img>
-    <h3>Nova</h3>
-    <img src="/static/images/nova.png" alt="omkar's dog nova"></img>
-    <h3>Sofie</h3>
-    <img src="/static/images/sofie.png" alt="omkar's dog sofie"></img>
+    <div class="topnav">
+        <a class="active" href="/logout">Home</a>
+        <a href="/about_not_logged_in">About Us</a>
+        <a href="/project_not_logged_in">Project Details</a>
+    </div>
+    <div class="container">
         
-        
+        <h1>Welcome to the PawFeast: Food on Demand User Interface!</h1>
+        <p>This is the webpage used as the user interface for the University of Illinois Urbana-Champaign ECE445 Group 30 Team Project.</p>
 
+        <img src="https://www.americanhumane.org/wp-content/uploads/2024/11/shutterstock_162633491-1440x900.jpg" alt="Pet Image">
+
+        <p>Sign in or create an account to get started!</p>
+        <!-- <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L25zODIzMC1pbWFnZS5qcGc.jpg" alt="Pet Image"> -->
+        
+        <form action="/login" method="POST">
+            Username: <input name="username" type="text" placeholder="Username"/><br>
+            Password: <input name="password" type="password" placeholder="Password"/><br>
+            <br>
+            <input value="Login" formaction="./login" type="submit" />
+            <input value="Create New Account" formaction="./create" type="submit" />
+        </form><br>
+        
+        <!-- <h2>Inspiration</h2>
+        <p> -->
+            <!-- <a href='/project_not_logged_in' >See Project Details Here</a><br> -->
+            <!-- We are pet enthusiasts and thought of this idea as we have faced the problem of bugs getting into our pet's food or trying to remember if we fed or double fed our pets when taking care of our own pets. We have included images of our pets below.
+        </p>
+        <h3>Lily</h3>
+        <img src="/static/images/lily.png" alt="kathryn's dog lily"></img>
+        <h3>Spock</h3>
+        <img src="/static/images/spock.png" alt="omkar's dog spock"></img>
+        <h3>Nova</h3>
+        <img src="/static/images/nova.png" alt="omkar's dog nova"></img>
+        <h3>Sofie</h3>
+        <img src="/static/images/sofie.png" alt="omkar's dog sofie"></img>
+            -->
+            
+
+    </div>
 </body>
+
 </html>
