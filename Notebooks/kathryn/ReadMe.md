@@ -214,3 +214,14 @@ Record:       During this meeting, I worked on buffing up our User Interface to 
 Date:         _4/21/2025_   
 Objectives:   The goal of this meeting was to get ready for the Mock Demo and to present to our TA. 
 Record:       During this meeting, we presented our current project to our TA for the Mock Demo and answered any questions that she had for us.
+
+## Meeting #33 
+Date:         _4/24/2025_   
+Objectives:   At this meeting we were working on debugging our motor board and crimping wires for the PDS board.  
+Record:       During this meeting, we successfully got our new motor board to work. The main driver chip had been soldered incorrectly. After reflowing, the board worked as expected.
+
+## Meeting #34  
+Date:         _4/26/2025_   
+Objectives:   The goal of this meeting was to meet with Aishee and prepare for the Final Demo on Tuesday.  
+Record:       During this meeting, we added pull up resistors to the SCK and SDA test points on the new PDS board. We compiled code, debugged ADC for the load cells, and tested our final project.
+

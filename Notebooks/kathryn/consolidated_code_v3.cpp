@@ -1,20 +1,19 @@
-'''
-original working code from last week
-'''
+"""
+working code from last week, switched out the adc code with arash's from 4/26/25
+"""
+
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <SPI.h>
 #include <MFRC522.h>
 #include <Adafruit_NAU7802.h>
+#include <Wire.h>
 
-
-// WiFi Credentials
-
+// WiFi Connection
 const char* ssid = "Omkar's phone";
 const char* password = "12345678";
 
-// Server Info
-const char* serverIP = "172.20.10.2";  // Replace with your PC's IP
+const char* serverIP = "172.20.10.2";  
 const int port = 8080;
 
 // RFID
@@ -30,7 +29,34 @@ byte lastUid[4] = {0};
 int sensorStatea = 0, lastStatea=0; 
 int sensorStateb = 0, lastStateb=0; 
 
-Adafruit_NAU7802 nau;
+//Load Cells & helper function
+TwoWire I2C_A = TwoWire(0);      // hardware controller 0
+TwoWire I2C_B = TwoWire(1);      // hardware controller 1
+
+Adafruit_NAU7802 adcA;
+Adafruit_NAU7802 adcB;
+
+bool configADC(Adafruit_NAU7802 &adc) {
+  adc.setLDO(NAU7802_3V0);
+  adc.setGain(NAU7802_GAIN_128);
+  adc.setRate(NAU7802_RATE_10SPS);
+
+  for (uint8_t i = 0; i < 10; i++) {
+    while (!adc.available()) delay(1);
+    adc.read();
+  }
+
+  while (!adc.calibrate(NAU7802_CALMOD_INTERNAL)) {
+    Serial.println(F("Internal cal failed, retrying…"));
+    delay(200);
+  }
+
+  while (!adc.calibrate(NAU7802_CALMOD_OFFSET)) {
+    Serial.println(F("System cal failed, retrying…"));
+    delay(200);
+  }
+  return true;
+}
 
 // Setup
 void setup() {
@@ -52,72 +78,31 @@ void setup() {
   pinMode(presence_sensor_a, INPUT);  
   pinMode(presence_sensor_b, INPUT);  
 
-  Wire.begin(17, 16);
-  Serial.print("NAU7802");
-  if (! nau.begin()) {
-    Serial.print("Failed to find NAU7802");
-    while (1) delay(10);  // Don't proceed.
-  }
-  Serial.print("Found NAU7802");
+  //for the load cells START
+  delay(50);
+  Serial.println(F("\nDual-NAU7802 demo"));
 
-  nau.setLDO(NAU7802_3V0);
-  Serial.print("LDO voltage set to ");
-  switch (nau.getLDO()) {
-    case NAU7802_4V5:  Serial.println("4.5V"); break;
-    case NAU7802_4V2:  Serial.println("4.2V"); break;
-    case NAU7802_3V9:  Serial.println("3.9V"); break;
-    case NAU7802_3V6:  Serial.println("3.6V"); break;
-    case NAU7802_3V3:  Serial.println("3.3V"); break;
-    case NAU7802_3V0:  Serial.println("3.0V"); break;
-    case NAU7802_2V7:  Serial.println("2.7V"); break;
-    case NAU7802_2V4:  Serial.println("2.4V"); break;
-    case NAU7802_EXTERNAL:  Serial.println("External"); break;
-  }
+  I2C_A.begin(17, 16, 400000);  // First ADC: SDA 17, SCL 16
+  I2C_B.begin(25, 33, 400000);  // Second ADC: SDA 25, SCL 33
 
-  nau.setGain(NAU7802_GAIN_128);
-  Serial.print("Gain set to ");
-  switch (nau.getGain()) {
-    case NAU7802_GAIN_1:  Serial.println("1x"); break;
-    case NAU7802_GAIN_2:  Serial.println("2x"); break;
-    case NAU7802_GAIN_4:  Serial.println("4x"); break;
-    case NAU7802_GAIN_8:  Serial.println("8x"); break;
-    case NAU7802_GAIN_16:  Serial.println("16x"); break;
-    case NAU7802_GAIN_32:  Serial.println("32x"); break;
-    case NAU7802_GAIN_64:  Serial.println("64x"); break;
-    case NAU7802_GAIN_128:  Serial.println("128x"); break;
+  if (!adcA.begin(&I2C_A)) {
+    Serial.println(F("❌  ADC-A (bus 0) not found at 0x2A"));
+    while (1) delay(1000);
   }
+  if (!adcB.begin(&I2C_B)) {
+    Serial.println(F("❌  ADC-B (bus 1) not found at 0x2A"));
+    while (1) delay(1000);
+  }
+  Serial.println(F("Both ADCs found ✔"));
 
-  nau.setRate(NAU7802_RATE_10SPS);
-  Serial.print("Conversion rate set to ");
-  switch (nau.getRate()) {
-    case NAU7802_RATE_10SPS:  Serial.println("10 SPS"); break;
-    case NAU7802_RATE_20SPS:  Serial.println("20 SPS"); break;
-    case NAU7802_RATE_40SPS:  Serial.println("40 SPS"); break;
-    case NAU7802_RATE_80SPS:  Serial.println("80 SPS"); break;
-    case NAU7802_RATE_320SPS:  Serial.println("320 SPS"); break;
-  }
-
-  // Take 10 readings to flush out readings
-  for (uint8_t i=0; i<10; i++) {
-    while (! nau.available()) delay(1);
-    nau.read();
-  }
-
-  while (! nau.calibrate(NAU7802_CALMOD_INTERNAL)) {
-    Serial.println("Failed to calibrate internal offset, retrying!");
-    delay(1000);
-  }
-  Serial.println("Calibrated internal offset");
-
-  while (! nau.calibrate(NAU7802_CALMOD_OFFSET)) {
-    Serial.println("Failed to calibrate system offset, retrying!");
-    delay(1000);
-  }
-  Serial.println("Calibrated system offset");
+  configADC(adcA);
+  configADC(adcB);
+  Serial.println(F("Calibration complete — streaming…"));
+  //load cells END
 }
 
-// Loop
 void loop() {
+  //for the food store
   sensorStatea = digitalRead(presence_sensor_a);
 
   if (sensorStatea != lastStatea) {
@@ -174,14 +159,17 @@ void loop() {
     }
   }
 
+  //load cells
+  while (!adcA.available()) delay(1);
+  int32_t rawA = adcA.read();
 
+  while (!adcB.available()) delay(1);
+  int32_t rawB = adcB.read();
 
-  while (! nau.available()) {
-    delay(1);
-  }
-  int32_t val = nau.read();
-  Serial.print("Read "); Serial.println(val);
+  Serial.printf("%ld\t%ld\n", rawA, rawB);   // tab-separated
+  delay(50);                                 // ~20 Hz print rate
 
+  //rfid
   if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial()) {
     delay(200); 
     return;
@@ -214,7 +202,8 @@ void loop() {
       String url = "http://" + String(serverIP) + ":" + String(port) + "/receive";
       http.begin(url);
       http.addHeader("Content-Type", "application/json");
-      String payload = "{\"tag\": \"" + uidString + "\"}";
+      String payload = "{\"tag\": \"" + uidString + "\", \"rawA\": " + String(rawA) + ", \"rawB\": " + String(rawB) + "}";
+      // String payload = "{\"tag\": \"" + uidString + "\"}";
       Serial.println("payload is "+payload);
       
       Serial.println("Sending POST now");

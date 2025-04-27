@@ -310,15 +310,17 @@ def receive_data():
             if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=30)):
                 print(f'dispense food')
                 dispense_food = True
+                amount = feeding_time[3]
                 database.createHistoryEntry(petID, f'{petname} requested food and food was dispensed', now2)
-                break
+                return {'status': 'received', "dispense_food": f"{dispense_food}", "amount": f"{amount}"}
+                
+                # break
             else:
                 print(f'need to wait')
         
         if dispense_food == False:
             database.createHistoryEntry(petID, f'{petname} requested food', now2)
-
-        return {'status': 'received', "dispense_food": f"{dispense_food}"}
+            return {'status': 'received', "dispense_food": f"{dispense_food}"}
 
 
         # try:
