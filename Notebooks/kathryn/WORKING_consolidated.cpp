@@ -4,6 +4,7 @@
 #include <MFRC522.h>
 #include <Adafruit_NAU7802.h>
 #include <Wire.h>
+#include <AccelStepper.h> 
 
 // WiFi Connection
 const char* ssid = "Omkar's phone";
@@ -25,16 +26,36 @@ byte lastUid[4] = {0};
 int sensorStatea = 0, lastStatea=0; 
 int sensorStateb = 0, lastStateb=0; 
 
-//motor code
-#define dirPin1  33
-#define stepPin1  25
+//motor code check if these are correct motor 1 is the food store
+#define dirPin1  32
+#define stepPin1  33
 int stepsPerRevolution = 200; // 360 degrees = 200 steps
+
+const int dirPin2 = 24;
+const int stepPin2 = 25;
+
+// Define AccelStepper motor interface type
+#define motorInterfaceType 1 // 1 = Driver (step+dir)
+
+// Create AccelStepper instance for Motor 2
+AccelStepper motor2(motorInterfaceType, stepPin2, dirPin2);
 
 
 //Load Cells & helper function
 TwoWire I2C_A = TwoWire(0);      // hardware controller 0
 
 Adafruit_NAU7802 adcA;
+
+//Button
+const int buttonPin = 27;
+bool lastButtonState = HIGH; // Assume unpressed initially
+bool currentButtonState = HIGH;
+unsigned long lastDebounceTime = 0;
+const unsigned long debounceDelay = 50; // 50ms debounce time
+
+// Global flag: becomes true for one loop when a click is detected
+bool buttonPressed = false;
+
 
 bool configADC(Adafruit_NAU7802 &adc) {
   adc.setLDO(NAU7802_3V0);
@@ -109,6 +130,8 @@ void setup() {
   pinMode(stepPin1, OUTPUT);
   pinMode(dirPin1, OUTPUT);
 
+  motor2.setMaxSpeed(1000); 
+  motor2.setAcceleration(500); 
 
   //for the load cells START
   delay(50);
@@ -117,7 +140,7 @@ void setup() {
   I2C_A.begin(17, 16, 400000);  // First ADC: SDA 17, SCL 16
 
   if (!adcA.begin(&I2C_A)) {
-    Serial.println(F("❌  ADC-A (bus 0) not found at 0x2A"));
+    Serial.println(F("ADC-A (bus 0) not found at 0x2A"));
     while (1) delay(1000);
   }
   Serial.println(F("ADC bowl found ✔"));
@@ -125,10 +148,12 @@ void setup() {
   configADC(adcA);
   Serial.println(F("Calibration complete — streaming…"));
   //load cells END
+
+  //button
+  pinMode(buttonPin, INPUT_PULLUP);
 }
 
 void loop() {
-  Serial.println(F("Do i get here?"));
   
   //for the food store
   sensorStatea = digitalRead(presence_sensor_a);
@@ -168,11 +193,29 @@ void loop() {
   //--------------------------- DO NOT EDIT ABOVE THIS LINE -----------------------------
   //ADD BUTTON LOGIC HERE v
   //TODO: MUST HAVE A BOOLEAN VARIABLE RESULTING FROM THIS WHERE TRUE = BUTTON PRESSED
+  buttonPressed = false; // Reset at the start of each loop
 
+  int reading = digitalRead(buttonPin);
+
+  if (reading != lastButtonState) {
+    lastDebounceTime = millis();
+  }
+
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+    if (reading != currentButtonState) {
+      currentButtonState = reading;
+
+      if (currentButtonState == LOW || currentButtonState == HIGH) {
+        buttonPressed = true; // Set true for this loop if clicked
+      }
+    }
+  }
+
+  lastButtonState = reading;
   //STOP BUTTON LOGIC HERE^
 
-  // if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial() && BUTTON) {
-  if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
+  if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial() && buttonPressed) {
+//   if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
     // we only get here if the button is pressed and the rfid is found
     String uidString = "";
     for (byte i = 0; i < rfid.uid.size; i++) {
@@ -198,9 +241,12 @@ void loop() {
       Serial.println(amount);
     }
 
-
     //TODO: ENTER MOTOR CODE TO OPEN THE FOOD BOWL LID HERE v
+    int steps90deg = stepsPerRevolution / 4; // 90 degrees = 50 steps
 
+    // Move forward 90 degrees
+    motor2.move(steps90deg);
+    motor2.runToPosition();
     //END MOTOR CODE TO OPEN THE FOOD BOWL LID HERE ^
 
     delay(2000);   //wait 2 seconds for bowl to finish opening
@@ -221,7 +267,8 @@ void loop() {
 
 
     //TODO: ENTER MOTOR CODE TO CLOSE FOOD BOWL LID HERE v
-
+    motor2.move(-steps90deg);
+    motor2.runToPosition();
     //END MOTOR CODE TO CLOSE FOOD BOWL LID HERE ^
 
 
