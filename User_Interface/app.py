@@ -18,8 +18,6 @@ session_opts = {
 # will remember past sessions (i.e. will remember the user as you move pages)
 wrapped_app = SessionMiddleware(app, session_opts)  
 
-
-
 # this will display the login page
 @app.route('/')
 def index():
@@ -33,7 +31,6 @@ def index():
 @app.route('/test')
 def test():
     return "Test route works!"
-
 
 #this allows static files to be accessed (ex. images)
 @app.route('/static/<filepath:path>')
@@ -267,25 +264,55 @@ def receive_data():
     
     # print(f'pushing the sensor data to the history table')
     if 'sensor' in data and 'value' in data and 'id' in data:
-        presence_sensor = data['sensor']
+        sensor = data['sensor']
         value = data['value']
         id_value = data['id']
 
         petID = database.getPetbyRFID(id_value)
+        petname = database.getPetName(petID)
 
-        if presence_sensor == "a" and value == 0:
+        if sensor == "a" and value == 0:
             database.createHistoryEntry(petID, f'Low food store. Capacity is at 50%.', datetime.now())
-        if presence_sensor == "b" and value == 0:
+            return {'status': 'received', 'history_entry': "created"}
+
+        if sensor == "b" and value == 0:
             database.createHistoryEntry(petID, f'Low food store. Capacity is at 20%.', datetime.now())
+            return {'status': 'received', 'history_entry': "created"}
+
+
     #         print(f'the sensor triggered is {presence_sensor} and its value is {value}')
     #         userID = 
     #         database.createHistoryEntry()
 
+        # Adding code to create a history entry here
+        # this will be for how full the bowl is AFTER the pet has eaten
+        # DEBUG: if there are any issues, test if the types are causeingn an issue
+        #       NEED TO CHANGE VALUE TO BE ACTUAL NUMBERS
+        if "done_eating" in data and data["done_eating"]:
+            if sensor == "load cell" and value < X:                 #empty
+                database.createHistoryEntry(petID, f'Your pet, {petname}, has finished eating all the food.', datetime.now())
+            if sensor == "load cell" and value >= X and value < Y:  #25% left
+                database.createHistoryEntry(petID, f'{petname} has finished eating. The food bowl capacity is at 25%.', datetime.now())
+            if sensor == "load cell" and value >= Y and value < Z:  #50% left
+                database.createHistoryEntry(petID, f'{petname} has finished eating. The food bowl capacity is at 50%.', datetime.now())
+            if sensor == "load cell" and value >= Z and value < A:  #75% left
+                database.createHistoryEntry(petID, f'{petname} has finished eating. The food bowl capacity is at 75%.', datetime.now())
+            if sensor == "load cell" and value >= A:                #100% left
+                database.createHistoryEntry(petID, f'{petname} has finished eating. The food bowl capacity is at 100%.', datetime.now())
+            return {'status': 'received', 'history_entry': "created"}
+
+        # if "done_eating" in data and not data["done_eating"]:
+
+
     #if RFID is scanned/button pressed, get the feeding times and return if it is a feeding time
-    if 'tag' in data:
+    if 'tag' in data and "sensor" in data and "value" in data:
         tag = int(data['tag'],16)
+        sensor = data["sensor"]
+        value = data["value"]
+        # already_dispensed = value / (weightprot * 4)
+
         # print(f'printing the type of the tag {type(tag)}')
-        print(f'printing the int of the tag UIN {tag}')
+        print(f'printing the int of the tag UIN {tag} and the {sensor} is {value}')
 
         petID = database.getPetbyRFID(tag)
         # print(f'the petid returned is {petID}')
@@ -307,12 +334,16 @@ def receive_data():
         for feeding_time in feeding_times:
             # print(f"the feeding times are {feeding_time[2]}")
 
-            if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=30)):
+            if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=15)):
                 print(f'dispense food')
                 dispense_food = True
                 amount = feeding_time[3]
                 database.createHistoryEntry(petID, f'{petname} requested food and food was dispensed', now2)
+                
+                #do math here for how much should actually be dispensed given the value passed in
+                # amount_dispense = (amount - already_dispensed) * 4
                 return {'status': 'received', "dispense_food": f"{dispense_food}", "amount": f"{amount}"}
+                # return {'status': 'received', "dispense_food": f"{dispense_food}", "amount": f"{amount_dispense}"}
                 
                 # break
             else:

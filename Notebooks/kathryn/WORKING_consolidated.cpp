@@ -1,18 +1,3 @@
-'''
-this is the working consolidated code. Working:
-    - rfid
-    - wifi
-    - presence sensors
-    - load cell
-
-TODO:
-    - need to modify app side to push notifications AFTER LID CLOSES of remaining food amount (as a percentage of bowl capacity)
-    - need to modify esp side to rotate by the amount provided
-    - need to add a button and button code
-    - need to add motor code
-
-'''
-
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <SPI.h>
@@ -39,6 +24,12 @@ byte lastUid[4] = {0};
 #define presence_sensor_b 35
 int sensorStatea = 0, lastStatea=0; 
 int sensorStateb = 0, lastStateb=0; 
+
+//motor code
+#define dirPin1  33
+#define stepPin1  25
+int stepsPerRevolution = 200; // 360 degrees = 200 steps
+
 
 //Load Cells & helper function
 TwoWire I2C_A = TwoWire(0);      // hardware controller 0
@@ -114,6 +105,11 @@ void setup() {
   pinMode(presence_sensor_a, INPUT);  
   pinMode(presence_sensor_b, INPUT);  
 
+  //for the motors
+  pinMode(stepPin1, OUTPUT);
+  pinMode(dirPin1, OUTPUT);
+
+
   //for the load cells START
   delay(50);
   Serial.println(F("\nDual-NAU7802 demo"));
@@ -132,6 +128,8 @@ void setup() {
 }
 
 void loop() {
+  Serial.println(F("Do i get here?"));
+  
   //for the food store
   sensorStatea = digitalRead(presence_sensor_a);
   if (sensorStatea != lastStatea) {
@@ -151,22 +149,29 @@ void loop() {
     String response = send_data(payload);
   }
 
-  //load cells
   while (!adcA.available()) delay(1);
   int32_t rawA = adcA.read();
 
-  delay(50);
-  String payload = "{\"sensor\": \"load cell\", \"value\": " + String(rawA) + "}";
-  String response = send_data(payload);
+  // //TESTING DISPENSE 1 FOOD
+  // digitalWrite(dirPin1, HIGH);
 
-
-  //rfid not found 
-  // TODO: AND BUTTON NOT PRESSED
-  // if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial()) {
-  //   delay(200); 
-  //   return;
+  // // Move Motor 1: 180 degrees = 100 steps manually
+  // for (int i = 0; i < stepsPerRevolution / 2; i++) {
+  //   digitalWrite(stepPin1, HIGH);
+  //   delayMicroseconds(2000);  // Speed control
+  //   digitalWrite(stepPin1, LOW);
+  //   delayMicroseconds(2000);
   // }
+  // delay(3000);
 
+
+  //--------------------------- DO NOT EDIT ABOVE THIS LINE -----------------------------
+  //ADD BUTTON LOGIC HERE v
+  //TODO: MUST HAVE A BOOLEAN VARIABLE RESULTING FROM THIS WHERE TRUE = BUTTON PRESSED
+
+  //STOP BUTTON LOGIC HERE^
+
+  // if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial() && BUTTON) {
   if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
     // we only get here if the button is pressed and the rfid is found
     String uidString = "";
@@ -178,12 +183,59 @@ void loop() {
     uidString.toUpperCase();
     Serial.println("Detected Tag: " + uidString);
     
-    String payload = "{\"tag\": \"" + uidString + "\"}";
+    //SEND HOW FULL THE BOWL IS TO THE SERVER -> DONE
+    String payload = "{\"tag\": \"" + uidString + "\", \"sensor\": \"load cell\", \"value\": " + String(rawA) + "}";
     String response = send_data(payload);
+    //USE RESPONSE TO FIND HOW MUCH TO DISPENSE 
+    //  -> i.e. parse response for amount
+    int amount_idx = response.indexOf("amount");
+    if (amount_idx != -1) {
+      int startQuote = response.indexOf("\"", amount_idx + 7);  // after 'amount":"
+      int endQuote = response.indexOf("\"", startQuote + 1);
+      String amount = response.substring(startQuote + 1, endQuote);   // check if indexing is correct, if it is add (.toInt()) to end of .substring
+      
+      Serial.print("Amount is: ");
+      Serial.println(amount);
+    }
+
+
+    //TODO: ENTER MOTOR CODE TO OPEN THE FOOD BOWL LID HERE v
+
+    //END MOTOR CODE TO OPEN THE FOOD BOWL LID HERE ^
+
+    delay(2000);   //wait 2 seconds for bowl to finish opening
+
+    //TODO: ENTER MOTOR CODE TO DISPENSE FOR AMOUNT NEEDED -> DONE
+    digitalWrite(dirPin1, HIGH);
+
+    // Move Motor 1: 180 degrees = 100 steps manually
+    for (int j = 0; j < amount; j++)
+      for (int i = 0; i < stepsPerRevolution / 2; i++) {
+        digitalWrite(stepPin1, HIGH);
+        delayMicroseconds(2000);  // Speed control
+        digitalWrite(stepPin1, LOW);
+        delayMicroseconds(2000);
+      }
+
+    delay(900000);    //wait 15 minutes for pet to eat
+
+
+    //TODO: ENTER MOTOR CODE TO CLOSE FOOD BOWL LID HERE v
+
+    //END MOTOR CODE TO CLOSE FOOD BOWL LID HERE ^
+
+
+    //TODO: WEIGH THE FOOD BOWL, SEND WEIGHT TO SERVER -> DONE
+    //DEBUG: if there are issues, check if the problem is with access/define rawA
+    while (!adcA.available()) delay(1);
+    rawA = adcA.read();
+
+    delay(50);
+    payload = "{\"id\": " + String(1582741251) + ", \"sensor\": \"load cell\", \"value\": " + String(rawA) + "}";
+    response = send_data(payload);
 
     rfid.PICC_HaltA();
     rfid.PCD_StopCrypto1();
-  }
 
   // TODO: parse the response for "POST Response: {"status": "received", "dispense_food": "True", "amount": "3"}"
   // if deispense food is true: 
@@ -195,5 +247,10 @@ void loop() {
   //    close the lid of the food bowl (stepper motor code for the lid)
   //    check the weight of the food bowl
   //    send to the server (empty/not)
+
+  // String payload = "{\"id\": \"" + uidString + "\", \"sensor\": \"load cell\", \"value\": " + String(rawA) + ", \"done_eating\": true}";
+  // String response = send_data(payload);
+
+  }  
   delay(1000); 
 }
