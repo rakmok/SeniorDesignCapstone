@@ -10,7 +10,12 @@
 const char* ssid = "Omkar's phone";
 const char* password = "12345678";
 
-const char* serverIP = "172.20.10.2";  
+// const char* ssid = "Kathryn's iPhone";
+// const char* password = "kitkat25";
+
+const char* serverIP = "172.20.10.2";
+// const char* serverIP = "172.20.10.5";  
+
 const int port = 8080;
 
 // RFID
@@ -27,12 +32,12 @@ int sensorStatea = 0, lastStatea=0;
 int sensorStateb = 0, lastStateb=0; 
 
 //motor code check if these are correct motor 1 is the food store
-#define dirPin1  32
-#define stepPin1  33
+#define dirPin1  33
+#define stepPin1  32
 int stepsPerRevolution = 200; // 360 degrees = 200 steps
 
-const int dirPin2 = 24;
-const int stepPin2 = 25;
+#define dirPin2 26
+#define stepPin2 25
 
 // Define AccelStepper motor interface type
 #define motorInterfaceType 1 // 1 = Driver (step+dir)
@@ -58,7 +63,7 @@ bool buttonPressed = false;
 
 
 bool configADC(Adafruit_NAU7802 &adc) {
-  adc.setLDO(NAU7802_3V0);
+  adc.setLDO(NAU7802_3V3);
   adc.setGain(NAU7802_GAIN_1);
   adc.setRate(NAU7802_RATE_10SPS);
 
@@ -214,7 +219,14 @@ void loop() {
   lastButtonState = reading;
   //STOP BUTTON LOGIC HERE^
 
-  if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial() && buttonPressed) {
+  if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial() || !buttonPressed) {
+    delay(200); 
+    return;
+  } else {
+
+  
+
+  // if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial() && buttonPressed) {
 //   if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
     // we only get here if the button is pressed and the rfid is found
     String uidString = "";
@@ -232,15 +244,20 @@ void loop() {
     //USE RESPONSE TO FIND HOW MUCH TO DISPENSE 
     //  -> i.e. parse response for amount
     int amount_idx = response.indexOf("amount");
+    int amount = 0;
     if (amount_idx != -1) {
       int startQuote = response.indexOf("\"", amount_idx + 7);  // after 'amount":"
       int endQuote = response.indexOf("\"", startQuote + 1);
-      String amount = response.substring(startQuote + 1, endQuote);   // check if indexing is correct, if it is add (.toInt()) to end of .substring
+      amount = response.substring(startQuote + 1, endQuote).toInt();   // check if indexing is correct, if it is add (.toInt()) to end of .substring
       
       Serial.print("Amount is: ");
       Serial.println(amount);
     }
 
+    if (amount <= 0) {
+      delay(200); 
+      return;
+    }
     //TODO: ENTER MOTOR CODE TO OPEN THE FOOD BOWL LID HERE v
     int steps90deg = stepsPerRevolution / 4; // 90 degrees = 50 steps
 
@@ -263,7 +280,9 @@ void loop() {
         delayMicroseconds(2000);
       }
 
-    delay(900000);    //wait 15 minutes for pet to eat
+    delay(60000);    //wait 15 minutes for pet to eat
+
+    // delay(900000);    //wait 15 minutes for pet to eat
 
 
     //TODO: ENTER MOTOR CODE TO CLOSE FOOD BOWL LID HERE v
@@ -278,7 +297,8 @@ void loop() {
     rawA = adcA.read();
 
     delay(50);
-    payload = "{\"id\": " + String(1582741251) + ", \"sensor\": \"load cell\", \"value\": " + String(rawA) + "}";
+    payload = "{\"tag\": \"" + uidString + "\", \"sensor\": \"load cell\", \"value\": " + String(rawA) + ", \"done_eating\": \"true\"}";
+    // payload = "{\"id\": " + String(1582741251) + ", \"sensor\": \"load cell\", \"value\": " + String(rawA) + "}";
     response = send_data(payload);
 
     rfid.PICC_HaltA();
