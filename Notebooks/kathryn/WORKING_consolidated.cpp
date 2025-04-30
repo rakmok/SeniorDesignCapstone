@@ -182,22 +182,7 @@ void loop() {
   while (!adcA.available()) delay(1);
   int32_t rawA = adcA.read();
 
-  // //TESTING DISPENSE 1 FOOD
-  // digitalWrite(dirPin1, HIGH);
-
-  // // Move Motor 1: 180 degrees = 100 steps manually
-  // for (int i = 0; i < stepsPerRevolution / 2; i++) {
-  //   digitalWrite(stepPin1, HIGH);
-  //   delayMicroseconds(2000);  // Speed control
-  //   digitalWrite(stepPin1, LOW);
-  //   delayMicroseconds(2000);
-  // }
-  // delay(3000);
-
-
-  //--------------------------- DO NOT EDIT ABOVE THIS LINE -----------------------------
   //ADD BUTTON LOGIC HERE v
-  //TODO: MUST HAVE A BOOLEAN VARIABLE RESULTING FROM THIS WHERE TRUE = BUTTON PRESSED
   buttonPressed = false; // Reset at the start of each loop
 
   int reading = digitalRead(buttonPin);
@@ -212,6 +197,8 @@ void loop() {
 
       if (currentButtonState == LOW || currentButtonState == HIGH) {
         buttonPressed = true; // Set true for this loop if clicked
+        String payload = "{\"button\": \"pressed\"}";
+        String response = send_data(payload);
       }
     }
   }
@@ -223,12 +210,6 @@ void loop() {
     delay(200); 
     return;
   } else {
-
-  
-
-  // if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial() && buttonPressed) {
-//   if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
-    // we only get here if the button is pressed and the rfid is found
     String uidString = "";
     for (byte i = 0; i < rfid.uid.size; i++) {
       if (rfid.uid.uidByte[i] < 0x10) uidString += "0";
@@ -238,86 +219,158 @@ void loop() {
     uidString.toUpperCase();
     Serial.println("Detected Tag: " + uidString);
     
-    //SEND HOW FULL THE BOWL IS TO THE SERVER -> DONE
     String payload = "{\"tag\": \"" + uidString + "\", \"sensor\": \"load cell\", \"value\": " + String(rawA) + "}";
     String response = send_data(payload);
-    //USE RESPONSE TO FIND HOW MUCH TO DISPENSE 
-    //  -> i.e. parse response for amount
+
     int amount_idx = response.indexOf("amount");
     int amount = 0;
     if (amount_idx != -1) {
-      int startQuote = response.indexOf("\"", amount_idx + 7);  // after 'amount":"
+      int startQuote = response.indexOf("\"", amount_idx + 7);  
       int endQuote = response.indexOf("\"", startQuote + 1);
-      amount = response.substring(startQuote + 1, endQuote).toInt();   // check if indexing is correct, if it is add (.toInt()) to end of .substring
+      amount = response.substring(startQuote + 1, endQuote).toInt(); 
       
       Serial.print("Amount is: ");
       Serial.println(amount);
     }
 
-    if (amount <= 0) {
+    if (amount <= 0 && rawA <= 5) {
       delay(200); 
       return;
     }
-    //TODO: ENTER MOTOR CODE TO OPEN THE FOOD BOWL LID HERE v
-    int steps90deg = stepsPerRevolution / 4; // 90 degrees = 50 steps
 
-    // Move forward 90 degrees
-    motor2.move(steps90deg);
-    motor2.runToPosition();
-    //END MOTOR CODE TO OPEN THE FOOD BOWL LID HERE ^
+    // NEW CODE: only run the below if dispense_food is true
+    bool shouldDispense = false;
+    int dispenseFlagIndex = response.indexOf("dispense_food");
+    if (dispenseFlagIndex != -1) {
+      int startQuote = response.indexOf("\"", dispenseFlagIndex + 14);
+      int endQuote = response.indexOf("\"", startQuote + 1);
+      String flagValue = response.substring(startQuote + 1, endQuote);
+      flagValue.toLowerCase();
+      shouldDispense = (flagValue == "true");
+    }
 
-    delay(2000);   //wait 2 seconds for bowl to finish opening
+    if (shouldDispense) {
+      int steps90deg = 67; // 90 degrees = 50 steps
+      motor2.move(steps90deg);
+      motor2.runToPosition();
 
-    //TODO: ENTER MOTOR CODE TO DISPENSE FOR AMOUNT NEEDED -> DONE
-    digitalWrite(dirPin1, HIGH);
+      delay(2000); //wait 2 seconds for bowl to finish opening
 
-    // Move Motor 1: 180 degrees = 100 steps manually
-    for (int j = 0; j < amount; j++)
-      for (int i = 0; i < stepsPerRevolution / 2; i++) {
-        digitalWrite(stepPin1, HIGH);
-        delayMicroseconds(2000);  // Speed control
-        digitalWrite(stepPin1, LOW);
-        delayMicroseconds(2000);
+      digitalWrite(dirPin1, HIGH); // Set direction
+      int32_t adc_start = rawA; 
+
+      if (adc_start < (amount * 40) - 20) {
+        unsigned long dispenseStartTime = millis();
+        int32_t lastAvgAdcValue = adc_start;
+
+        while (true) {
+          digitalWrite(stepPin1, HIGH);
+          delayMicroseconds(2000);
+          digitalWrite(stepPin1, LOW);
+          delayMicroseconds(2000);
+
+          static int stepCounter = 0;
+          stepCounter++;
+
+          if (stepCounter >= 100) {
+            stepCounter = 0;
+
+            Serial.println("Checking weight...");
+
+            int32_t sum = 0;
+            for (int i = 0; i < 5; i++) {
+              while (!adcA.available()) delay(1);
+              sum += adcA.read();
+              delay(50);
+            }
+            int32_t avgAdcValue = sum / 5;
+
+            Serial.print("Average ADC Reading: ");
+            Serial.println(avgAdcValue);
+            Serial.println("------------------------------------");
+
+            // Case 1: If target reached
+            if (avgAdcValue >= (amount * 40) - 20) {
+              Serial.println("Target weight reached! Stopping motor.");
+              payload = "{\"load_cell\": \"" + String(avgAdcValue) + "\"}";
+              response = send_data(payload);
+              break;
+            }
+
+            // Case 2: If stuck for too long without enough change
+            if (millis() - dispenseStartTime >= 60000) { // 60 seconds
+              int32_t delta = avgAdcValue - lastAvgAdcValue;
+              if (abs(delta) < 40) { 
+                Serial.println("Weight not changing after 1 minute — likely empty. Stopping motor.");
+                payload = "{\"error\": \"no food detected while dispensing\"}";
+                response = send_data(payload);
+                break;
+              } else {
+                // Reset timer and last reading if weight DID change
+                dispenseStartTime = millis();
+                lastAvgAdcValue = avgAdcValue;
+              }
+            }
+          }
+        }
+      } else {
+        Serial.println("Monitoring eating...");
+        const unsigned long maxWait = 240000;
+        const unsigned long checkInterval = 3000;
+        unsigned long startTime = millis();
+        bool petAte = false;
+
+        while (millis() - startTime < maxWait) {
+          delay(checkInterval);
+
+          // Try to get a new ADC reading, but don't wait forever
+          unsigned long adcTimeout = millis();
+          while (!adcA.available()) {
+            if (millis() - adcTimeout > 500) {  // Timeout after 500ms
+              Serial.println("ADC timeout, using last reading.");
+              break;
+            }
+            delay(1);
+          }
+
+          int32_t adc_now = adcA.read(); // Always attempt to read (either fresh or stale)
+          payload = "{\"load_cell\": \"" + String(adc_now) + "\"}";
+          response = send_data(payload);
+
+          int32_t delta = adc_start - adc_now;
+
+          Serial.print("Food eaten so far: ");
+          Serial.println(delta);
+
+          if (delta >= (amount * 40) - 20) {
+            Serial.println("Pet ate the target amount!");
+            petAte = true;
+            break;
+          }
+        }
+
+        if (!petAte) {
+          Serial.println("Time limit reached, closing lid even if not fully eaten.");
+        }
       }
 
-    delay(60000);    //wait 15 minutes for pet to eat
+      delay(60000); // wait 1 minute
 
-    // delay(900000);    //wait 15 minutes for pet to eat
+      motor2.move(-steps90deg);
+      motor2.runToPosition();
 
+      while (!adcA.available()) delay(1);
+      rawA = adcA.read();
 
-    //TODO: ENTER MOTOR CODE TO CLOSE FOOD BOWL LID HERE v
-    motor2.move(-steps90deg);
-    motor2.runToPosition();
-    //END MOTOR CODE TO CLOSE FOOD BOWL LID HERE ^
-
-
-    //TODO: WEIGH THE FOOD BOWL, SEND WEIGHT TO SERVER -> DONE
-    //DEBUG: if there are issues, check if the problem is with access/define rawA
-    while (!adcA.available()) delay(1);
-    rawA = adcA.read();
-
-    delay(50);
-    payload = "{\"tag\": \"" + uidString + "\", \"sensor\": \"load cell\", \"value\": " + String(rawA) + ", \"done_eating\": \"true\"}";
-    // payload = "{\"id\": " + String(1582741251) + ", \"sensor\": \"load cell\", \"value\": " + String(rawA) + "}";
-    response = send_data(payload);
+      delay(50);
+      payload = "{\"tag\": \"" + uidString + "\", \"sensor\": \"load cell\", \"value\": " + String(rawA) + ", \"done_eating\": \"true\"}";
+      response = send_data(payload);
+    } else {
+      Serial.println("Dispense_food was not true. Skipping food motor logic.");
+    }
 
     rfid.PICC_HaltA();
     rfid.PCD_StopCrypto1();
-
-  // TODO: parse the response for "POST Response: {"status": "received", "dispense_food": "True", "amount": "3"}"
-  // if deispense food is true: 
-  //    open the lid of the food bowl (stepper motor code for lid)
-  //    delay(2000) (to make sure that it finishes opening)
-  //    for the amount that must be dispensed:
-  //        rotate the food wheel (stepper motor code for the food)
-  //    delay(600000)   (wait 10 minutes and close the food lid)
-  //    close the lid of the food bowl (stepper motor code for the lid)
-  //    check the weight of the food bowl
-  //    send to the server (empty/not)
-
-  // String payload = "{\"id\": \"" + uidString + "\", \"sensor\": \"load cell\", \"value\": " + String(rawA) + ", \"done_eating\": true}";
-  // String response = send_data(payload);
-
   }  
   delay(1000); 
 }

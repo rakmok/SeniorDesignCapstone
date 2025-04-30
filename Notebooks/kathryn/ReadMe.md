@@ -225,3 +225,17 @@ Date:         _4/26/2025_
 Objectives:   The goal of this meeting was to meet with Aishee and prepare for the Final Demo on Tuesday.  
 Record:       During this meeting, we added pull up resistors to the SCK and SDA test points on the new PDS board. We compiled code, debugged ADC for the load cells, and tested our final project.
 
+## Meeting #35  
+Date:         _4/27/2025_   
+Objectives:   The goal of this meeting was to prepare for the Final Demo on Tuesday.  
+Record:       During this meeting, we worked on combining the code for the different components and sensors together. We worked on logic for the overall functionality.    
+
+## Meeting #36  
+Date:         _4/28/2025_   
+Objectives:   The goal of this meeting was to prepare for the Final Demo on Tuesday.  
+Record:       During this meeting, we worked on the motor, button, and load cell code to fulfill the purpose of our project.  
+
+## Meeting #37  
+Date:         _4/29/2025_   
+Objectives:   The goal of this meeting was to prepare for our Final Demo and Demo.  
+Record:       During this meeting, we set our project up for the Final Demo and rehearsed what we were going to say. We also recorded the video for the extra credit assignment.  

@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 # from wsgiref.simple_server import make_server
 # import sys
 
-# Create Bottle app
+# Create Bottle app 1944283185 1582741251
 app = Bottle()  
 
 # Configure session to be able to store information
@@ -261,7 +261,11 @@ def receive_data():
     # print("ESP32 Sent:", data)
 
     #if a presence sensor is triggered, handle the event and push to the history table
-    
+    # if 'error' in data:
+    #     error = data['error']
+    #     if error == 'no food detected while dispensing':
+    #         database.createHistoryEntry(petID, f'Low food store. Capacity is at 50%.', datetime.now())
+
     # print(f'pushing the sensor data to the history table')
     if 'sensor' in data and 'value' in data and 'id' in data:
         sensor = data['sensor']
@@ -270,12 +274,13 @@ def receive_data():
 
         petID = database.getPetbyRFID(id_value)
         petname = database.getPetName(petID)
+        print(f'here')
 
-        if sensor == "a" and value == 0:
+        if sensor == "a" and value == 1:
             database.createHistoryEntry(petID, f'Low food store. Capacity is at 50%.', datetime.now())
             return {'status': 'received', 'history_entry': "created"}
 
-        if sensor == "b" and value == 0:
+        if sensor == "b" and value == 1:
             database.createHistoryEntry(petID, f'Low food store. Capacity is at 20%.', datetime.now())
             return {'status': 'received', 'history_entry': "created"}
 
@@ -288,27 +293,59 @@ def receive_data():
         # this will be for how full the bowl is AFTER the pet has eaten
         # DEBUG: if there are any issues, test if the types are causeingn an issue
         #       NEED TO CHANGE VALUE TO BE ACTUAL NUMBERS
-        if "done_eating" in data and data["done_eating"]:
-            if sensor == "load cell" and value < X:                 #empty
-                database.createHistoryEntry(petID, f'Your pet, {petname}, has finished eating all the food.', datetime.now())
-            if sensor == "load cell" and value >= X and value < Y:  #25% left
-                database.createHistoryEntry(petID, f'{petname} has finished eating. The food bowl capacity is at 25%.', datetime.now())
-            if sensor == "load cell" and value >= Y and value < Z:  #50% left
-                database.createHistoryEntry(petID, f'{petname} has finished eating. The food bowl capacity is at 50%.', datetime.now())
-            if sensor == "load cell" and value >= Z and value < A:  #75% left
-                database.createHistoryEntry(petID, f'{petname} has finished eating. The food bowl capacity is at 75%.', datetime.now())
-            if sensor == "load cell" and value >= A:                #100% left
-                database.createHistoryEntry(petID, f'{petname} has finished eating. The food bowl capacity is at 100%.', datetime.now())
-            return {'status': 'received', 'history_entry': "created"}
+        # if "done_eating" in data and data["done_eating"]:
+        #     # print(f"we are in the done eating section")
+        #     if sensor == "load cell" and value < 10:                 #empty
+        #         database.createHistoryEntry(petID, f'Your pet, {petname}, has finished eating all the food.', datetime.now())
+        #     if sensor == "load cell" and value >= 10 and value < 30:  #25% left
+        #         database.createHistoryEntry(petID, f'{petname[0]} has finished eating. The food bowl capacity is at 25%.', datetime.now())
+        #     if sensor == "load cell" and value >= 30 and value < 50:  #50% left
+        #         database.createHistoryEntry(petID, f'{petname[0]} has finished eating. The food bowl capacity is at 50%.', datetime.now())
+        #     if sensor == "load cell" and value >= 50 and value < 70:  #75% left
+        #         database.createHistoryEntry(petID, f'{petname[0]} has finished eating. The food bowl capacity is at 75%.', datetime.now())
+        #     if sensor == "load cell" and value >= 70:                #100% left
+        #         database.createHistoryEntry(petID, f'{petname[0]} has finished eating. The food bowl capacity is at 100%.', datetime.now())
+        #     return {'status': 'received', 'history_entry': "created"}
 
         # if "done_eating" in data and not data["done_eating"]:
-
-
-    #if RFID is scanned/button pressed, get the feeding times and return if it is a feeding time
     if 'tag' in data and "sensor" in data and "value" in data:
         tag = int(data['tag'],16)
         sensor = data["sensor"]
         value = data["value"]
+        print(f'the tag value is {tag}')
+
+        petID = database.getPetbyRFID(tag)
+        print(f'the petID is {petID}')
+        petname = database.getPetName(petID)
+
+        print(f'do i get here')
+        if "done_eating" in data and data["done_eating"]:
+            sensor = data['sensor']
+            value = data['value']
+            if sensor == "load cell" and value < 15:                 #empty
+                database.createHistoryEntry(petID, f'Your pet, {petname[0]}, has finished eating all the food.', datetime.now())
+
+            elif sensor == "load cell":
+                database.createHistoryEntry(petID, f'Your pet, {petname[0]}, has left {round(value/3, 2)} grams of food.', datetime.now())
+
+            # if sensor == "load cell" and value < 10:                 #empty
+            #     database.createHistoryEntry(petID, f'Your pet, {petname}, has finished eating all the food.', datetime.now())
+            # if sensor == "load cell" and value >= 10 and value < 30:  #25% left
+            #     database.createHistoryEntry(petID, f'{petname[0]} has finished eating. The food bowl capacity is at 25%.', datetime.now())
+            # if sensor == "load cell" and value >= 30 and value < 50:  #50% left
+            #     database.createHistoryEntry(petID, f'{petname[0]} has finished eating. The food bowl capacity is at 50%.', datetime.now())
+            # if sensor == "load cell" and value >= 50 and value < 70:  #75% left
+            #     database.createHistoryEntry(petID, f'{petname[0]} has finished eating. The food bowl capacity is at 75%.', datetime.now())
+            # if sensor == "load cell" and value >= 70:                #100% left
+            #     database.createHistoryEntry(petID, f'{petname[0]} has finished eating. The food bowl capacity is at 100%.', datetime.now())
+            return {'status': 'received', 'history_entry': "created"}
+
+
+    #if RFID is scanned/button pressed, get the feeding times and return if it is a feeding time
+    # if 'tag' in data and "sensor" in data and "value" in data:
+        # tag = int(data['tag'],16)
+        # sensor = data["sensor"]
+        # value = data["value"]
         # already_dispensed = value / (weightprot * 4)
 
         # print(f'printing the type of the tag {type(tag)}')
@@ -332,9 +369,9 @@ def receive_data():
         petname = database.getPetName(petID[0])[0]
         # print(f'the petname is {petname}')
         for feeding_time in feeding_times:
-            # print(f"the feeding times are {feeding_time[2]}")
+            print(f"the feeding times are {feeding_time[2]}")
 
-            if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=15)):
+            if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=3)):
                 print(f'dispense food')
                 dispense_food = True
                 amount = feeding_time[3]
