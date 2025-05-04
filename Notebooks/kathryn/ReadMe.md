@@ -153,6 +153,10 @@ Date:         _3/11/2025_
 Objectives:   The goal of this meeting was to finish preparing for the breadboard demo.   
 Record:       During this meeting, we continued testing the RFID, Load Cell, and Presence Sensor Code on our breadboard. Once we got it working individually, we started working on integrating the code. We got it working for the demo.  
 
+I created a History page to allow users to see all the history events in one place without overcrowding the dashboard.
+
+![History Page](./images/History_page.png)
+
 
 ## Meeting #17
 Date:         _3/12/2025_   
