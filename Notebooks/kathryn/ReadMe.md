@@ -87,7 +87,14 @@ Record:       Deliverables for breadboard demo:
 ## Meeting #11
 Date:         _2/25/2025_   
 Objectives:   The goal of this meeting was to work on circuit, RFID, parts, and database.  
-Record:       During this meeting, Omkar worked on the Brain circuit, Arash worked on the RFID parts, and I worked on the Database schema. Files for the database can be referenced [here](../../UI/).
+Record:       During this meeting, Omkar worked on the Brain circuit, Arash worked on the RFID parts, and I worked on the Database schema.  
+
+Files for the database can be referenced [here](./database_schema.md).
+
+References:  
+```
+MySQL “MySQL :: MySQL 8.4 Reference Manual :: 5.3 Creating and Using a Database.” MySQL :: Developer Zone, https://dev.mysql.com/doc/refman/8.4/en/database-use.html. Accessed: 2 April 2025. 11. “Removing rows from a table using the DELETE statement.” IBM, IBM, 11 April 2023, https://www.ibm.com/docs/en/i/7.4?topic=language-removing-rows-from-table-using-delete-statement. Accessed: 2 April 2025.
+```
 
 ## Meeting #13
 Date:         _3/4/2025_   
@@ -106,10 +113,39 @@ This is a screenshot of the current version of the code.
 ![Dashboard](./images/Dashboard.png)
 
 
+References:  
+```
+MySQL “MySQL :: MySQL 8.4 Reference Manual :: 5.3 Creating and Using a Database.” MySQL :: Developer Zone, https://dev.mysql.com/doc/refman/8.4/en/database-use.html. Accessed: 2 April 2025.  
+
+“Removing rows from a table using the DELETE statement.” IBM, IBM, 11 April 2023, https://www.ibm.com/docs/en/i/7.4?topic=language-removing-rows-from-table-using-delete-statement. Accessed: 2 April 2025.
+
+Santos, Rui. “ESP32 Web Server - Arduino IDE.” Random Nerd Tutorials, https://randomnerdtutorials.com/esp32-web-server-arduino-ide/. Accessed: 2 April 2025.
+
+“SQL ALTER TABLE Statement - ADD Column.” W3Schools, https://www.w3schools.com/sql/sql_alter.asp. Accessed 2 April 2025.
+
+“Wi-Fi API.” Arduino ESP32, Espressif Systems,
+https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html. Accessed: 2 April 2025.
+```
+
+
 ## Meeting #15
 Date:         _3/9/2025_   
 Objectives:   The goal of this meeting was to start preparing for the breadboard demo.   
 Record:       During this meeting, we assembled our parts that we had and started unit testing the RFID, Load Cell, and Presence Sensor Code on our breadboard.
+
+
+References:  
+```
+Balboa, Miguel.
+“miguelbalboa/rfid: Arduino RFID Library for MFRC522.
+” GitHub, 2022,
+https://github.com/miguelbalboa/rfid#pin-layout%20%20*
+. Accessed 2 April 2025.  
+“Esp32 Rfid Rc522 Interfacing With Esp32 | Esp32.
+” ElectronicWings,
+https://www.electronicwings.com/esp32/rfid-rc522-interfacing-with-esp32. Accessed: 2 April
+2025.
+```
 
 
 ## Meeting #16
@@ -124,6 +160,12 @@ Objectives:   Breadboard demo!!
 Record:       During this meeting, demoed our breadboard code. We also got approved to use the RFID devboard for the final demo due to our demonstrated complexity of the project and PCB.  
 
 We also ordered an ESP32 Dev Kit to start testing our code before our boards come in.  
+
+References:
+```
+HiLetgo Store. “HiLetgo 3pcs RFID Kit - Mifare RC522 RF IC Card Sensor Module + S50 Blank Card + Key Ring for Arduino Raspberry Pi.” Amazon.com, https://www.amazon.com/HiLetgo-3pcs-RFID-Kit-Raspberry/dp/B07VLDSYRW/ref=sr_1_3?crid=2G4E2MS2RX8MW&dib=eyJ2IjoiMSJ9 nBtD0DMuYO8mlxrAEp3oswAUwQg3P5YUwf8zysU_
+WCseayzmN2l80p0JLkBjS6GQFPsqozCq1WlbOzZyzoPMkoNqIfGC-wDgtlkDQFdZaal7C2P0BdaAiBUTtCry87d2KTM379zKa4Ui. Accessed: 2 April 2025.
+```
 
 
 ## [No Meeting]
@@ -183,6 +225,11 @@ Date:         _4/10/2025_
 Objectives:   The goal of this meeting was to start preparing for the mock demo.   
 Record:       During this meeting I was working on handling the routing between the ESP32 and the locally hosted web server. I made the routing work such that if an RFID tag is scanned, the UIN stored in the tag is sent to the web server. Once the web server receives the tag, it fetches the pet the RFID belongs to and the corresponding feed times. If it is a feeding time, the server returns the message {"dispense food": "True"}
 
+References:
+```
+R. Santos, “ESP32 HTTP GET and POST with Arduino IDE,” Random Nerd Tutorials, https://randomnerdtutorials.com/esp32-http-get-post-arduino/. Accessed: May 3, 2025.
+```
+
 
 ## Meeting #28
 Date:         _4/14/2025_   
@@ -210,6 +257,19 @@ Date:         _4/18/2025_
 Objectives:   The goal of this meeting was to get ready for the Mock Demo on Monday, 4/21.
 Record:       During this meeting, I worked on buffing up our User Interface to include a navigation bar and an about page.
 
+The navigation bar differed by if the user was logged in versus logged out.  
+
+Logged in:
+![Navigation Bar](./images/navbar.png) 
+
+Logged out:
+![About Page](./images/about_page.png) 
+
+References:
+```
+W3Schools.com, "How TO - Top Navigation," W3Schools, https://www.w3schools.com/howto/howto_js_topnav.asp Accessed: May 3, 2025.
+```
+
 ## Meeting #32
 Date:         _4/21/2025_   
 Objectives:   The goal of this meeting was to get ready for the Mock Demo and to present to our TA. 
@@ -235,7 +295,19 @@ Date:         _4/28/2025_
 Objectives:   The goal of this meeting was to prepare for the Final Demo on Tuesday.  
 Record:       During this meeting, we worked on the motor, button, and load cell code to fulfill the purpose of our project.  
 
+I tracked the load cell readings and converted them to grams. I discovered the conversion rate from the load cell readings to grams was consistently 3:1 +/- 5 grams. I altered the code to store the weight +/- 5 grams in my history database which would then be displayed to the User Interface's History page.
+
+![Storing weight](./images/storing_weight.png)
+
 ## Meeting #37  
 Date:         _4/29/2025_   
 Objectives:   The goal of this meeting was to prepare for our Final Demo and Demo.  
-Record:       During this meeting, we set our project up for the Final Demo and rehearsed what we were going to say. We also recorded the video for the extra credit assignment.  
+Record:       During this meeting, we set our project up for the Final Demo and rehearsed what we were going to say. We demonstrated the functionality of our project to our Professor. We also recorded the video for the extra credit assignment.  
+
+The demonstration video can be seen [here](https://www.youtube.com/embed/mT6wlLyjihs?si=MdiL9m5ufs3mbADt)!
+
+
+## Meeting #38   
+Date:         _5/1/2025_   
+Objectives:   The goal of this meeting was to prepare for our Mock Presentation and to present.  
+Record:       During this meeting, we practiced our presentation, decided who would say what and updated our slides with more pictures. During our presentation, we received feedback for our final presentation on Tuesday, including the need for slide numbers, proof of verifications, and the need for a Future Work Slide. Feedback from the Comms TA included using less text on slides and duplicating slides rather than going back and forth.
