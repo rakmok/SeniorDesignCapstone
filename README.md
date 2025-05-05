@@ -177,3 +177,11 @@ The objective of this session was to finish and send out the new board, which wa
 ![PDS Layout](images/PDS_layout.PNG)
 
 The plan is to have the battery voltage input into the 12V of the PDS. The three outputs of the 12V on the PDS will go to the two motor boards and the power board. The 5V and 3v3 output of the power board (which is converted) will go back into the inputs of the PDS 5V and 3v3. This way the outputs of the PDS 5V and 3v3 can go to the two motor boards and brain. This way, the system is more robust. The board also has an ADC subcircuit on it because we realized that the NAU7802 chip actually does not work well with two input sensors, and it is better to just have two chips: one for each sensor.
+
+# 05/05/2025
+
+The objective of this meeting was to finish the slideshow for the final presentation. During our mock presentation, Sai gave us some feedback about needing more verification for our subsystems. We finished the slides and took some more videos of the working feeder as well as some images of the different voltages below. The voltages of the 5V and 3v3 bus meet our requirements, while the battery voltage changes between its overvoltage limit of 12.6V (4.2V per cell) and its undervoltage of around 7.8V. The cells have a capacity of 3200mAh, which means that a 3s2p pack has a nominal energy of 71 Wh and a maximum of 80.6 Wh. If the passive draw of the motors and entire system is around 300 mA, not including the active draw when the motors are running, the battery will last around 23 hours. That number is pretty poor, so a future goal would be to decrease this passive draw by setting aside two GPIO for the DRV8825's sleep pin (cause currently we have the sleep always set to high).
+
+![Battery Voltage](images/battery_voltage.jpg)
+![5V Bus](images/voltage_5.jpg)
+![3v3 Bus](images/voltage_3v3.jpg)
