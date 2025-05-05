@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawFeast: Food on Demand</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        body {
+            text-align: left;
+            background-color: #b8dac0;
+            /* font-family: 'Times New Roman', Times, serif;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 30px; */
+        }
+        input {
+            background-color: #d2ecd9;
+        }
+        img {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            color: rgb(1, 5, 7);
+            width: 50%;
+            height: 50%;
+        }
+        a {
+            font-family: 'Times New Roman', Times, serif;
+            color: #475f4d;
+        }
+        .container {  
+            text-align: center;
+            background-color: #b8dac0;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 30px; 
+
+        }
+        .history-card {
+            /* width: 92%; */
+            text-align: left;
+            margin: auto;
+            /* width: 350px; Adjust width based on your design */
+            padding: 15px;
+            background-color: rgb(222, 249, 235);
+            border: 1px solid rgb(188, 213, 200);
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgb(188, 213, 200);
+            transition: transform 0.3s ease-in-out;
+        }
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            position: sticky;
+            margin-left: -10px;
+            margin-top: -10px;
+            margin-right: -10px;
+            top: 0;
+        }
+
+        /* https://www.w3schools.com/howto/howto_js_topnav.asp */
+        /* Style the links inside the navigation bar */
+        .topnav a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            background-color: #98c0a1;
+            color: white;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+            background-color: #98c0a1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href='/logout' >Logout</a>
+        <a href='/dashboard'>User Dashboard</a>
+        <a class="active" href='/history' >History Page</a>
+        <a href="/about_logged_in">About Us</a>
+        <a href='/project_page_logged_in' >See Project Details Here</a>
+    </div>
+    <div class="container">
+        
+        <!-- <a href='/logout' >Logout</a><br>
+        <a href='/dashboard'>User Dashboard</a><br>
+        <a href='/project_page_logged_in' >See Project Details Here</a><br> -->
+
+
+        <h1>Welcome {{username}} to the PawFeast: Food on Demand User Interface!</h1>
+
+        <p>This is the webpage used as the user interface for the University of Illinois Urbana-Champaign ECE445 Group 30 Team Project.<br><br>
+            You are now viewing the history of the pet notifications.
+        </p>
+        
+        <h2>Pet Event History</h2>
+        <div class="history-card">
+            You can see your pet's event history here!
+
+            <ul>
+                % for entry in history:
+                    <li>{{ entry[2] }}  --  Event: {{ entry[1] }} <br></li>
+                % end
+            </ul>
+                
+        </div>
+    </div>
+</body>
+</html>
