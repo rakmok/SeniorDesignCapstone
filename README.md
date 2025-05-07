@@ -62,5 +62,5 @@ For this project to be considered successful, our project must meet the followin
 # Demo
 
 Here is the link to our demonstration video:
-[Demo](https://www.youtube.com/embed/mT6wlLyjihs?si=MdiL9m5ufs3mbADt) <br><br><br>
+[Demo](https://www.youtube.com/watch?v=mT6wlLyjihs) <br><br><br>
 ![Post Presentation Picture](Images/IMG_0642.jpg)
