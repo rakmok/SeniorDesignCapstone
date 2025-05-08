@@ -371,7 +371,7 @@ def receive_data():
         for feeding_time in feeding_times:
             print(f"the feeding times are {feeding_time[2]}")
 
-            if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=3)):
+            if feeding_time[2] <= current_time <= (feeding_time[2] + timedelta(minutes=30)):
                 print(f'dispense food')
                 dispense_food = True
                 amount = feeding_time[3]
